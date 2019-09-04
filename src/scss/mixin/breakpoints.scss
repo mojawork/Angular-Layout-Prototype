@@ -1,0 +1,116 @@
+@mixin mediascreen(
+  $mediascreen:null,
+  $min : null,
+  $max : null,
+  $orientation:null) {
+
+  // -- custom ---
+  @if $mediascreen == 'custom' {
+    @if $orientation == null {
+      @if $min == null {
+        @media screen and (max-width: #{$max}) {
+          @content;
+        }
+      } @else if $max == null {
+        @media screen and (min-width: #{$min}) {
+          @content;
+        }
+      } @else {
+        @media screen and (min-width: #{$min}) and (max-width: #{$max}) {
+          @content;
+        }
+      }
+    }
+    @else {
+      @if $min == null {
+        @media screen and (max-width: #{$max})  and (orientation: $orientation){
+          @content;
+        }
+      } @else if $max == null {
+        @media screen and (min-width: #{$min}) and (orientation: $orientation) {
+          @content;
+        }
+      } @else {
+        @media screen and (min-width: #{$min}) and (max-width: #{$max})  and (orientation: $orientation){
+          @content;
+        }
+      }
+    }
+  }
+
+  // -- bp1 ---
+  @if $mediascreen == 'ms1' and $orientation == null {
+    @media (max-width: $ms-1-max) {
+      @content;
+    }
+  }
+  @if $mediascreen == 'ms1' and $orientation != null {
+    @media (max-width: $ms-1-max) and (orientation: $orientation) {
+      @content;
+    }
+  }
+
+  // -- bp2 ---
+  @if $mediascreen == 'ms2' and $orientation == null {
+    @media screen and (min-width: #{$ms-2-min}) and (max-width: #{$ms-2-max}) {
+      @content;
+    }
+  }
+  @if $mediascreen == 'ms2' and $orientation != null {
+    @media screen and (min-width: #{$ms-2-min}) and (max-width: #{$ms-2-max}) and (orientation: $orientation) {
+      @content;
+    }
+  }
+
+  // -- bp3 ---
+  @if $mediascreen == 'ms3' and $orientation == null {
+    @media screen and (min-width: #{$ms-3-min}) and (max-width: #{$ms-3-max}) {
+      @content;
+    }
+  }
+  @if $mediascreen == 'ms3' and $orientation != null {
+    @media screen and (min-width: #{$ms-3-min}) and (max-width: #{$ms-3-max}) and (orientation: $orientation) {
+      @content;
+    }
+  }
+
+  // -- bp4 ---
+  @if $mediascreen == 'ms4' and $orientation == null {
+    @media screen and (min-width: #{$ms-4-min}) and (max-width: #{$ms-4-max}) {
+      @content;
+    }
+  }
+  @if $mediascreen == 'ms4' and $orientation != null {
+    @media screen and (min-width: #{$ms-4-min}) and (max-width: #{$ms-4-max}) and (orientation: $orientation) {
+      @content;
+    }
+  }
+
+  // -- bp5 ---
+  @if $mediascreen == 'ms5' and $orientation == null {
+    @media screen and (min-width: #{$ms-5-min}) and (max-width: #{$ms-5-max}) {
+      @content;
+    }
+  }
+  @if $mediascreen == 'ms5' and $orientation != null {
+    @media screen and (min-width: #{$ms-5-min}) and (max-width: #{$ms-5-max}) and (orientation: $orientation) {
+      @content;
+    }
+  }
+
+  // -- bp6 ---
+  @if $mediascreen == 'ms6' and $orientation == null {
+    @media (min-width: $ms-6-min) {
+      @content;
+    }
+  }
+  @if $mediascreen == 'ms6' and $orientation != null {
+    @media (min-width: $ms-6-min) and (orientation: $orientation) {
+      @content;
+    }
+  }
+
+}
+
+
+

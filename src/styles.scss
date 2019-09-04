@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+// ----------------------------------------------------------------------------
+// Config
+// ----------------------------------------------------------------------------
+@import "import.scss";
+
+// ----------------------------------------------------------------------------
+// Tag declaration
+// ----------------------------------------------------------------------------
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: $global-font-size;
+  background-color: transparent;
+}
+
+body {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  &.noScroll {
+    overflow: hidden;
+    position: fixed;
+  }
+  *, ::before, ::after {
+    font-style: $global-font-style;
+    font-family: $global-font-family;
+    font-weight: $global-font-weight;
+    text-decoration: $global-text-decoration;
+    letter-spacing: $global-letter-spacing;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: $color-black;
+    box-sizing: border-box;
+  }
+  div, article, section, figure {
+    display: flex;
+    box-sizing: border-box;
+
+  }
+  button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin: 0;
+    padding: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Global Fonts
+// ----------------------------------------------------------------------------
+
+body {
+
+  // --- mediascreen 01 - 03 ---
+  @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
+    * {
+      font-size: $font-size-2 * $font-mobile-factor;
+      line-height: $line-height-2 * $font-mobile-factor;
+    }
+    h1, .h1 {
+      font-size: $font-size-4 * $font-mobile-factor;
+      line-height: $line-height-4 * $font-mobile-factor;
+    }
+    h2, .h2 {
+      font-size: $font-size-3 * $font-mobile-factor;
+      line-height: $line-height-3 * $font-mobile-factor;
+    }
+    h3, h4, h5, h6, .h3, p, li {
+      font-size: $font-size-2 * $font-mobile-factor;
+      line-height: $line-height-2 * $font-mobile-factor;
+    }
+    small, .small {
+      font-size: $font-size-1 * $font-mobile-factor;
+      line-height: $line-height-1 * $font-mobile-factor;
+    }
+  }
+
+  // --- mediascreen 04 - 06 ---
+  @include mediascreen($mediascreen: 'custom', $min: $ms-4-min) {
+    * {
+      font-size: $font-size-2 * $font-desktop-factor;
+      line-height: $line-height-2 * $font-desktop-factor;
+    }
+    h1, .h1 {
+      font-size: $font-size-4 * $font-desktop-factor;
+      line-height: $line-height-4 * $font-desktop-factor;
+    }
+    h2, .h2, h2 > strong, .h2 > strong {
+      font-size: $font-size-3 * $font-desktop-factor;
+      line-height: $line-height-3 * $font-desktop-factor;
+    }
+    h3, h4, h5, h6, .h3, p, li {
+      font-size: $font-size-2 * $font-desktop-factor;
+      line-height: $line-height-2 * $font-desktop-factor;
+    }
+    small, .small {
+      font-size: $font-size-1 * $font-desktop-factor;
+      line-height: $line-height-1 * $font-desktop-factor;
+    }
+  }
+}
+

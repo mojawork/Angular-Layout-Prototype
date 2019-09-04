@@ -1,0 +1,22 @@
+<article [ngStyle]="gridTemplateColums()">
+
+  <header
+    *ngIf="options.cardHeader"
+    [ngStyle]="gridColumHeaderFooter()">
+      {{options.cardHeader.content}}
+  </header>
+
+  <section
+    *ngFor="let card of options.cardContent; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+    [ngStyle]="gridColumcard({'first': isFirst,'last': isLast, 'even': isEven, 'odd':isOdd})">
+    {{card.content}}
+  </section>
+
+  <footer
+    *ngIf="options.cardFooter"
+    [ngStyle]="gridColumHeaderFooter()">
+      {{options.cardFooter.content}}
+  </footer>
+
+
+</article>

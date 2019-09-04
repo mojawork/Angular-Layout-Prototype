@@ -1,0 +1,81 @@
+// ----------------------------------------------------------------------------
+// Config
+// ----------------------------------------------------------------------------
+@import "../scss/import";
+
+// ----------------------------------------------------------------------------
+// Default
+// ----------------------------------------------------------------------------
+.layout {
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  top: 0;
+  min-height: 100%;
+  padding: 0;
+  border: 1px solid $color-grey;
+  border-top: 0;
+  border-bottom: 0;
+
+  > header {
+    flex: 0 0;
+    padding: $padding;
+    background-color: $color-grey;
+  }
+
+  > main {
+    padding: $padding;
+    flex: 1 1;
+  }
+
+  > footer {
+    flex: 0 0;
+    padding: $padding;
+    background-color: $color-grey;
+  }
+
+
+  //--- breakpoint 1 ---
+  @include mediascreen($mediascreen: 'ms1') {
+
+    @include layout($mediascreen: 'ms1');
+
+  }
+  //--- breakpoint 2 ---
+  @include mediascreen($mediascreen: 'ms2') {
+    @include layout($mediascreen: 'ms2');
+    .wrapper {
+      overflow: hidden;
+    }
+  }
+  //--- breakpoint 3 ---
+  @include mediascreen($mediascreen: 'ms3') {
+    @include layout($mediascreen: 'ms3');
+    .wrapper {
+      overflow: hidden;
+    }
+  }
+  //--- breakpoint 4 ---
+  @include mediascreen($mediascreen: 'ms4') {
+    @include layout($mediascreen: 'ms4');
+    .wrapper {
+      overflow: hidden;
+    }
+  }
+  //--- breakpoint 5 ---
+  @include mediascreen($mediascreen: 'ms5') {
+    @include layout($mediascreen: 'ms5');
+  }
+  //--- breakpoint 6 ---
+  @include mediascreen($mediascreen: 'ms6') {
+    @include layout($mediascreen: 'ms6');
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Modifire
+// ----------------------------------------------------------------------------
+
+.fixed {
+  position: fixed;
+}

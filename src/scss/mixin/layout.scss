@@ -1,0 +1,41 @@
+// mixin only can use in container with position: absolute / fixed
+@mixin layout(
+  $mediascreen:null) {
+
+  // -- mediascreen1 - mediascreen2 ---
+  @if $mediascreen == 'ms1' or $mediascreen == 'ms2' {
+    width: 100%;
+  }
+
+  // -- mediascreen3 ---
+  @if $mediascreen == 'ms3' {
+    width: 94%;
+    left: 50%;
+    margin-left: -47%;
+  }
+
+  // -- mediascreen4 ---
+  @if $mediascreen == 'ms4' {
+    width: $ms-4-min;
+    left: 50%;
+    margin-left: -$ms-4-min * 0.5;
+  }
+
+  // -- mediascreen5 ---
+  @if $mediascreen == 'ms5' {
+    width: $ms-5-min;
+    left: 50%;
+    margin-left: -$ms-5-min * 0.5;
+  }
+
+  // -- mediascreen6 ---
+  @if $mediascreen == 'ms6' {
+    width: $ms-6-min;
+    left: 50%;
+    margin-left: -$ms-6-min * 0.5;
+  }
+
+}
+
+
+

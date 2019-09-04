@@ -1,0 +1,30 @@
+@import "import.scss";
+
+:host {
+  article {
+    display: grid;
+    grid-gap: $margin;
+    margin-bottom: $margin * 4;
+
+    > * {
+      padding: $padding;
+      background-color: $color-blue-light;
+    }
+
+    > *:nth-child(odd) {
+      padding: $padding;
+      background-color: $color-grey-light;
+    }
+
+    header, footer {
+      &::first-letter {
+        font-weight: bold;
+        font-size: $font-size-4;
+      }
+
+      background-color: $color-blue !important;
+      color: $color-white;
+
+    }
+  }
+}
