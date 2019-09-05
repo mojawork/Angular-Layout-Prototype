@@ -1,0 +1,101 @@
+
+@import "import.scss";
+
+:host {
+  position: fixed;
+  width: 200px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -100px;
+  font-size: $font-size-1;
+  color: $color-black;
+  background-color: $color-grey;
+  padding: $padding * 0.5;
+  border:1px solid $color-black;
+  display: flex;
+  // --- mediascreen 01 ---
+  @include mediascreen($mediascreen: 'ms1') {
+    &::after {
+      content: "Mediascreen-1-portrait";
+    }
+  }
+  @include mediascreen($mediascreen: 'ms1', $orientation: 'landscape') {
+    &::after {
+      content: "Mediascreen-1-landscape";
+    }
+  }
+
+  // --- mediascreen 02 ---
+  @include mediascreen($mediascreen: 'ms2') {
+    &::after {
+      content: "Mediascreen-2-portrait";
+    }
+  }
+  @include mediascreen($mediascreen: 'ms2', $orientation: 'landscape') {
+    &::after {
+      content: "Mediascreen-2-landscape";
+    }
+  }
+
+  // --- mediascreen 03 ---
+  @include mediascreen($mediascreen: 'ms3') {
+    &::after {
+      content: "Mediascreen-3-portrait";
+    }
+  }
+  @include mediascreen($mediascreen: 'ms3', $orientation: 'landscape') {
+    &::after {
+      content: "Mediascreen-3-landscape";
+    }
+  }
+
+  // --- mediascreen 04 ---
+  @include mediascreen($mediascreen: 'ms4') {
+    &::after {
+      content: " Mediascreen-4-portrait";
+    }
+  }
+  @include mediascreen($mediascreen: 'ms4', $orientation: 'landscape') {
+    &::after {
+      content: "Mediascreen-4-landscape";
+    }
+  }
+
+  // --- mediascreen 05 ---
+  @include mediascreen($mediascreen: 'ms5') {
+    &::after {
+      content: "Mediascreen-5";
+    }
+  }
+  @include mediascreen($mediascreen: 'ms5', $orientation: 'landscape') {
+    &::after {
+      content: "Mediascreen-5-landscape";
+    }
+  }
+
+  // --- mediascreen 06 ---
+  @include mediascreen($mediascreen: 'ms6') {
+    &::after {
+      content: 'Mediascreen-6-portrait';
+    }
+  }
+  @include mediascreen($mediascreen: 'ms6', $orientation: 'landscape') {
+    &::after {
+      content: 'Mediascreen-6-landscape';
+    }
+  }
+
+  // --- mediascreen 07 ---
+  @include mediascreen($mediascreen: 'ms7') {
+    &::after {
+      content: 'Mediascreen-7-portrait';
+    }
+  }
+  @include mediascreen($mediascreen: 'ms7', $orientation: 'landscape') {
+    &::after {
+      content: 'Mediascreen-7-landscape';
+    }
+  }
+
+}
+
