@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GirdCardColumTypeInterface, GridcardsInterface} from './gridcards.interface';
+import {GirdCardColumTypeInterface, GridcardsOptionsInterface} from './gridcards.interface';
 import {MediascreenService} from '../../utils/mediascreen/mediascreen.service';
-import {Observable} from 'rxjs';
 import {MediascreenStatusInterface} from '../../utils/mediascreen/mediascreen.interface';
 
 @Component({
@@ -11,7 +10,9 @@ import {MediascreenStatusInterface} from '../../utils/mediascreen/mediascreen.in
 })
 export class GridcardsComponent implements OnInit {
 
-    @Input() public options: GridcardsInterface;
+    @Input() public options: GridcardsOptionsInterface;
+
+    private startByMediaScreen = 5;
 
 
     constructor(
@@ -19,70 +20,56 @@ export class GridcardsComponent implements OnInit {
     ) {
     }
 
-
-    private MediaScreenStatus: MediascreenStatusInterface;
-
+    private MediaScreenStatus: MediascreenStatusInterface | null = null;
 
     public gridTemplateColums() {
-        let colums = '1fr';
-        for (let i = 0; i < (this.options.colums - 1); i++) {
-            colums = `${colums}  1fr`;
+
+        if (this.MediaScreenStatus && this.MediaScreenStatus.ms >= this.startByMediaScreen) {
+            let colums = '1fr';
+            for (let i = 0; i < (this.options.visual.colums - 1); i++) {
+                colums = `${colums}  1fr`;
+            }
+            return {'grid-template-columns': colums};
         }
-        return {'grid-template-columns': colums};
-    }
-
-
-    private splitCardColumn(cardColumn: number): number {
-
-
-        /*
-        if (this.MediaScreenStatus.ms === 3) {
-            return cardColumn * 2;
-        }
-
-         */
-
-
-        return cardColumn;
-
 
     }
 
     public gridColumcard(type: GirdCardColumTypeInterface) {
 
+        if (this.MediaScreenStatus && this.MediaScreenStatus.ms >= this.startByMediaScreen) {
 
-        if (this.options.cardColumn && type.first) {
-            return {'grid-column': 'span ' + this.options.cardColumn.first};
+            if (this.options.visual.cardColumn && type.first) {
+                return {'grid-column': 'span ' + this.options.visual.cardColumn.first};
+            }
+
+            if (this.options.visual.cardColumn && type.even && !type.first && !type.last) {
+                return {'grid-column': 'span ' + this.options.visual.cardColumn.even};
+            }
+            if (this.options.visual.cardColumn && type.odd && !type.first && !type.last) {
+                return {'grid-column': 'span ' + this.options.visual.cardColumn.odd};
+            }
+
+            if (this.options.visual.cardColumn && type.last) {
+                return {'grid-column': 'span ' + this.options.visual.cardColumn.last};
+            }
         }
-
-
-        if (this.options.cardColumn && type.even && !type.first && !type.last) {
-            return {'grid-column': 'span ' + this.splitCardColumn(this.options.cardColumn.even)};
-        }
-        if (this.options.cardColumn && type.odd && !type.first && !type.last) {
-            return {'grid-column': 'span ' + this.splitCardColumn(this.options.cardColumn.odd)};
-        }
-
-        if (this.options.cardColumn && type.last) {
-            return {'grid-column': 'span ' + this.options.cardColumn.last};
-        }
-
-
         return {'grid-column': 'span 1'};
-
     }
 
     public gridColumHeaderFooter() {
-        return {'grid-column': 'span ' + this.options.colums};
+        if (this.MediaScreenStatus && this.MediaScreenStatus.ms >= this.startByMediaScreen) {
+            return {'grid-column': 'span ' + this.options.visual.colums};
+        }
     }
 
 
     public ngOnInit() {
 
-        this.mediascreenService.getMediascreen().subscribe((response) => {
-            this.MediaScreenStatus = response;
-
-        });
+        if (!this.options.visual.set) {
+            this.mediascreenService.getMediascreen().subscribe((response) => {
+                this.MediaScreenStatus = response;
+            });
+        }
 
     }
 

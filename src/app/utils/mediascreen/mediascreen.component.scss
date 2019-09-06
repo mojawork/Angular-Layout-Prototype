@@ -9,9 +9,10 @@
   margin-left: -100px;
   font-size: $font-size-1;
   color: $color-black;
-  background-color: $color-grey;
+  background-color: $color-white;
   padding: $padding * 0.5;
   border:1px solid $color-black;
+  border-bottom:0;
   display: flex;
   // --- mediascreen 01 ---
   @include mediascreen($mediascreen: 'ms1') {

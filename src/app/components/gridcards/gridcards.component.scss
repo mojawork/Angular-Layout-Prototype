@@ -5,6 +5,7 @@
     display: grid;
     grid-gap: $margin;
     margin-bottom: $margin * 4;
+    grid-template-columns: 1fr 1fr;
 
     > * {
       padding: $padding;
@@ -17,7 +18,10 @@
     }
 
     header, footer {
+      grid-column: span 2;
+
       &::first-letter {
+
         font-weight: bold;
         font-size: $font-size-4;
       }
@@ -26,5 +30,47 @@
       color: $color-white;
 
     }
+
+    @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
+
+
+    }
+    @include mediascreen($mediascreen: 'custom', $max: $ms-2-max) {
+      grid-template-columns: 1fr;
+      header, footer {
+        grid-column: span 1;
+      }
+    }
+
+    // --- sets ---
+
+    &.set-4-1-4 {
+      grid-template-columns: 4fr 1fr 4fr;
+
+      header, footer {
+        grid-column: span 3;
+      }
+
+      @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
+        grid-template-columns: 1fr 1fr;
+        section:nth-of-type(3n+2) {
+
+          display: none;
+        }
+        header, footer {
+          grid-column: span 2;
+        }
+
+      }
+
+      @include mediascreen($mediascreen: 'custom', $max: $ms-2-max) {
+        grid-template-columns: 1fr;
+        header, footer {
+          grid-column: span 1;
+        }
+      }
+
+    }
+
   }
 }

@@ -1,4 +1,4 @@
-<article [ngStyle]="gridTemplateColums()">
+<article [ngStyle]="gridTemplateColums()" [ngClass]="options.visual.set">
 
   <header
     *ngIf="options.cardHeader"
@@ -17,6 +17,5 @@
     [ngStyle]="gridColumHeaderFooter()">
       {{options.cardFooter.content}}
   </footer>
-
 
 </article>
