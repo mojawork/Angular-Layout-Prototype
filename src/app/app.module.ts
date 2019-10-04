@@ -7,7 +7,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GridcardsModule} from './components/gridcards/gridcards.module';
 import {AppState} from './app.state';
-import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
     GridcardsModule,
     NgxsModule.forRoot([
       AppState
-    ]),
-    NgxsReduxDevtoolsPluginModule.forRoot()
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
