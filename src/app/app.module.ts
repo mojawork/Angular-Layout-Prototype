@@ -2,11 +2,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgxsModule} from '@ngxs/store';
 
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GridcardsModule} from './components/gridcards/gridcards.module';
 import {AppState} from './app.state';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {UtilsModule} from './utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import {AppState} from './app.state';
     GridcardsModule,
     NgxsModule.forRoot([
       AppState
-    ])
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    UtilsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

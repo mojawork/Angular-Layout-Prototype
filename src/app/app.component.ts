@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(
       new DataGridCards(this.test)
     );
+
   }
 
 }

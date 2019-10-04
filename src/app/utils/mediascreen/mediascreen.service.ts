@@ -7,8 +7,6 @@ import {MEDIASCREENSTATUS} from './mediascreen.status';
     providedIn: 'root'
 })
 export class MediascreenService {
-
-
     private mediaScreen: BehaviorSubject<MediascreenStatusInterface> = new BehaviorSubject(MEDIASCREENSTATUS);
 
     constructor() {
