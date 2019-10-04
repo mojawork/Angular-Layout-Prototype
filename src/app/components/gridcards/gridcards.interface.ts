@@ -18,12 +18,14 @@ export interface GridcardHeaderInterface {
 }
 
 export interface GridcardContentInterface {
+  /*
   image: {
     src?: string;
     title?: string;
     alt?: string;
     figcaption?: string;
   };
+  */
   content?: string;
 }
 

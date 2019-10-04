@@ -10,6 +10,10 @@ export class GridcardsComponent implements OnInit {
 
   @Input() public options: GridcardsInterface;
 
+  constructor() {
+  }
+
+
   public gridTemplateColums() {
     let colums = '1fr';
     for (let i = 0; i < (this.options.colums - 1); i++) {
@@ -39,8 +43,6 @@ export class GridcardsComponent implements OnInit {
     return {'grid-column': 'span ' + this.options.colums};
   }
 
-  constructor() {
-  }
 
   ngOnInit() {
   }
