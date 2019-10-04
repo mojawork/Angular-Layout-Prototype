@@ -1,4 +1,4 @@
-import {GridcardsInterface} from './components/gridcards/gridcards.interface';
+import {GridcardsInterface} from '../data/gridcards.interface';
 
 export interface AppStateInterface {
   test: string;

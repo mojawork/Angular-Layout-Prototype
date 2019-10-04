@@ -1,12 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GirdCardColumTypeInterface, GridcardsInterface} from './gridcards.interface';
+import {GirdCardColumTypeInterface, GridcardsInterface} from '../../../../data/gridcards.interface';
+
+
 
 @Component({
-  selector: 'app-gridcards',
-  templateUrl: './gridcards.component.html',
-  styleUrls: ['./gridcards.component.scss']
+  selector: 'app-gridcards-view',
+  templateUrl: './gridcards-view.component.html',
+  styleUrls: ['./gridcards-view.component.scss']
 })
-export class GridcardsComponent implements OnInit {
+export class GridcardsViewComponent implements OnInit {
 
   @Input() public options: GridcardsInterface;
 

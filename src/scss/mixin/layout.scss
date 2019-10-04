@@ -5,6 +5,7 @@
   // -- mediascreen1 - mediascreen2 ---
   @if $mediascreen == 'ms1' or $mediascreen == 'ms2' {
     width: 100%;
+    min-width: $ms-1-min;
   }
 
   // -- mediascreen3 ---

@@ -4,10 +4,12 @@ import {NgxsModule} from '@ngxs/store';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {GridcardsModule} from './components/gridcards/gridcards.module';
 import {AppState} from './app.state';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {UtilsModule} from './utils/utils.module';
+
+import {GridcardsFormModule} from './components/form/gridcards-form/gridcards-form.module';
+import {GridcardsViewModule} from './components/view/gridcards-view/gridcards-view.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {UtilsModule} from './utils/utils.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GridcardsModule,
+    GridcardsViewModule,
+    GridcardsFormModule,
     NgxsModule.forRoot([
       AppState
     ]),

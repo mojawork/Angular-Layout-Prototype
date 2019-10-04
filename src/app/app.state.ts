@@ -1,7 +1,8 @@
 import {State, Action, StateContext} from '@ngxs/store';
 import {AppStateInterface} from './app.interface';
-import {dataGridCards} from '../data/data';
-import {GridcardsInterface} from './components/gridcards/gridcards.interface';
+import {dataGridCards} from '../data/gridcrads';
+import {GridcardsInterface} from '../data/gridcards.interface';
+
 
 export class DataGridCards {
   public static readonly type = 'datagridcards';

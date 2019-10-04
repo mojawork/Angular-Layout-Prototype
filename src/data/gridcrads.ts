@@ -1,4 +1,4 @@
-import {GridcardsInterface} from '../app/components/gridcards/gridcards.interface';
+import {GridcardsInterface} from './gridcards.interface';
 
 export const GridcardsTest: GridcardsInterface[] = [
   {

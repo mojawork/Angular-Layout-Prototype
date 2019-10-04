@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngxs/store';
-import {GridcardsInterface} from './components/gridcards/gridcards.interface';
-import {GridcardsTest} from '../data/data';
+
 import {DataGridCards} from './app.state';
+import {GridcardsInterface} from '../data/gridcards.interface';
+import {GridcardsTest} from '../data/gridcrads';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   public title = 'layout';
   public datagridcards: GridcardsInterface[] | null = null;
 
-  public test = GridcardsTest;
+
 
   constructor(private store: Store) {
   }
@@ -22,11 +23,6 @@ export class AppComponent implements OnInit {
     this.store.subscribe((response) => {
       this.datagridcards = response.appstate.datagridcards;
     });
-
-    this.store.dispatch(
-      new DataGridCards(this.test)
-    );
-
   }
 
 }
