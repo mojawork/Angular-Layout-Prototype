@@ -1,8 +1,15 @@
 <div class="layout">
   <header>header</header>
   <main>
-    <app-gridcards-view *ngFor="let options of datagridcards" [options]="options"></app-gridcards-view>
-    <app-gridcards-form *ngFor="let options of datagridcards" [options]="options"></app-gridcards-form>
+
+    <section>
+      <app-gridcards-view *ngFor="let options of datagridcards" [options]="options"></app-gridcards-view>
+    </section>
+
+    <section>
+      <app-gridcards-form [options]="datagridcards"></app-gridcards-form>
+    </section>
+
     <router-outlet></router-outlet>
   </main>
   <footer>footer</footer>

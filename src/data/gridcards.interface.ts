@@ -1,13 +1,14 @@
 export interface GridcardsInterface {
-  colums: number;
+  id: string;
+  colums: GridcardsValueInterface;
   cardHeader?: GridcardHeaderInterface;
   cardColumn?: {
-    first: number;
-    even: number;
-    odd: number;
-    last: number;
+    first: GridcardsValueInterface;
+    even: GridcardsValueInterface;
+    odd: GridcardsValueInterface;
+    last: GridcardsValueInterface;
   };
-  cardContent?: GridcardContentInterface [];
+  cardContent?: GridcardsContentInterface [];
   cardFooter?: GridcardFooterInterface | null;
 }
 
@@ -17,7 +18,13 @@ export interface GridcardHeaderInterface {
   direction?: GridcardDirectionEnum;
 }
 
-export interface GridcardContentInterface {
+export interface GridcardsValueInterface {
+  name: string;
+  value: string;
+  type: string;
+}
+
+export interface GridcardsContentInterface {
   /*
   image: {
     src?: string;
@@ -39,6 +46,14 @@ export interface GirdCardColumTypeInterface {
   last: boolean;
   even: boolean;
   odd: boolean;
+
+}
+
+export enum GridcardsColumTypeEnum {
+  first,
+  last,
+  even,
+  odd,
 
 }
 

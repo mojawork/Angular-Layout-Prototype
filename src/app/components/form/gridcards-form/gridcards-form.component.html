@@ -1,2 +1,46 @@
-<button (click)="updateGridData()">update</button>
-<p>gridcards-form works!</p>
+<form *ngFor="let option of options; let i = index"
+      [formGroup]="formgroups[i]"
+      [ngxsForm]="option.id"
+      novalidate
+
+      (ngSubmit)="onSubmit(option.id)">
+
+  <fieldset>
+    <legend>{{option.id}}</legend>
+    <div>
+      <label>{{option.colums.name}}:
+        <input [type]="option.colums.type" formControlName="colums">
+      </label>
+    </div>
+
+    <hr>
+
+    <div>
+      <label>{{option.cardColumn.first.name}}:
+        <input [type]="option.cardColumn.first.type" formControlName="cardColumnFirst">
+      </label>
+
+      <label>{{option.cardColumn.even.name}}:
+        <input [type]="option.cardColumn.even.type" formControlName="cardColumnEven">
+      </label>
+
+      <label>{{option.cardColumn.odd.name}}:
+        <input [type]="option.cardColumn.odd.type" formControlName="cardColumnOdd">
+      </label>
+
+      <label>{{option.cardColumn.last.name}}:
+        <input [type]="option.cardColumn.last.type" formControlName="cardColumnLast">
+      </label>
+    </div>
+
+    <hr>
+
+
+    <button type="submit">Submit {{option.id}}</button>
+
+
+  </fieldset>
+
+
+</form>
+

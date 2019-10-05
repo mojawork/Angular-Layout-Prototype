@@ -10,6 +10,7 @@ import {UtilsModule} from './utils/utils.module';
 
 import {GridcardsFormModule} from './components/form/gridcards-form/gridcards-form.module';
 import {GridcardsViewModule} from './components/view/gridcards-view/gridcards-view.module';
+import {NgxsFormPluginModule} from '@ngxs/form-plugin';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {GridcardsViewModule} from './components/view/gridcards-view/gridcards-vi
     NgxsModule.forRoot([
       AppState
     ]),
+    NgxsFormPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     UtilsModule
   ],

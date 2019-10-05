@@ -24,8 +24,19 @@
   }
 
   > main {
-    padding: $padding;
     flex: 1 1;
+    display: grid;
+    margin: $margin;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $margin;
+
+
+    > section {
+      display: flex;
+      flex-flow: column;
+    }
+
+
   }
 
   > footer {

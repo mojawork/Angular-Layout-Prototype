@@ -18,7 +18,7 @@ export class GridcardsViewComponent implements OnInit {
 
   public gridTemplateColums() {
     let colums = '1fr';
-    for (let i = 0; i < (this.options.colums - 1); i++) {
+    for (let i = 0; i < (parseFloat(this.options.colums.value) - 1); i++) {
       colums = `${colums}  1fr`;
     }
     return {'grid-template-columns': colums};
@@ -26,23 +26,23 @@ export class GridcardsViewComponent implements OnInit {
 
   public gridColumcard(type: GirdCardColumTypeInterface) {
     if (this.options.cardColumn && type.first) {
-      return {'grid-column': 'span ' + this.options.cardColumn.first};
+      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.first.value)};
     }
     if (this.options.cardColumn && type.even && !type.first && !type.last) {
-      return {'grid-column': 'span ' + this.options.cardColumn.even};
+      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.even.value)};
     }
     if (this.options.cardColumn && type.odd && !type.first && !type.last) {
-      return {'grid-column': 'span ' + this.options.cardColumn.odd};
+      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.odd.value)};
     }
     if (this.options.cardColumn && type.last) {
-      return {'grid-column': 'span ' + this.options.cardColumn.last};
+      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.last.value)};
     }
     return {'grid-column': 'span 1'};
 
   }
 
   public gridColumHeaderFooter() {
-    return {'grid-column': 'span ' + this.options.colums};
+    return {'grid-column': 'span ' + parseFloat(this.options.colums.value)};
   }
 
 

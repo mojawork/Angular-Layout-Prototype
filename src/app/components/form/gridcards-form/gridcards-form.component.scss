@@ -1,0 +1,36 @@
+@import "import.scss";
+
+$label-min-width:260px;
+
+:host {
+  fieldset{
+    display: flex;
+    flex-flow: row wrap;
+    div{
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%;
+    }
+  }
+  label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: $label-min-width;
+    margin: 0 $margin $margin 0;
+    border:1px solid $color-grey;
+    padding:$padding;
+    :last-of-type{
+      margin-right: 0;
+    }
+  }
+  input[type="number"]{
+    max-width: 50px;
+  }
+  hr{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid $color-grey;
+    margin: 0 0 $margin;
+  }
+}

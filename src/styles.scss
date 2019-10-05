@@ -39,17 +39,36 @@ body {
     box-sizing: border-box;
 
   }
-  button {
-    border: 0;
+
+  fieldset{
+    display: flex;
+    padding:$padding;
+    margin: $margin * 2 0;
+    border: 1px solid $color-grey;
+    legend{
+      padding: 0 $padding;
+      background-color: $color-blue-light;
+      border: 1px solid $color-grey;
+    }
+  }
+
+  input ,button {
+    border: 1px solid $color-grey;
+    margin-right:$margin;
+    padding:$padding * 0.5;
     background-color: transparent;
     cursor: pointer;
     -webkit-appearance: none;
-    margin: 0;
-    padding: 0;
     &:focus {
       outline: none;
     }
   }
+
+    button {
+    background-color: $color-grey-light;
+
+  }
+
 }
 
 // ----------------------------------------------------------------------------

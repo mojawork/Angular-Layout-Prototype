@@ -3,7 +3,6 @@ import {Store} from '@ngxs/store';
 
 import {DataGridCards} from './app.state';
 import {GridcardsInterface} from '../data/gridcards.interface';
-import {GridcardsTest} from '../data/gridcrads';
 
 @Component({
   selector: 'app-root',
