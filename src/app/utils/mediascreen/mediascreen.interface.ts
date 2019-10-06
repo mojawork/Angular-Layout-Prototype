@@ -1,4 +1,4 @@
 export interface MediascreenStatusInterface {
-    ms: number;
-    orinatation: string;
+  ms: number;
+  orinatation: string;
 }

@@ -1,5 +1,5 @@
-<div class="layout">
-  <header>header</header>
+<div class="layout" [ngClass]="{'zoom': layoutService.getLayoutStatus().zoom}">
+  <header (click)="layoutService.setLayoutZoom()">header</header>
   <main>
 
     <section>

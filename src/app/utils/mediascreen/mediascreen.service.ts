@@ -1,23 +1,28 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {MediascreenStatusInterface, } from './mediascreen.interface';
+import {BehaviorSubject} from 'rxjs';
+import {MediascreenStatusInterface} from './mediascreen.interface';
 import {MEDIASCREENSTATUS} from './mediascreen.status';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class MediascreenService {
-    private mediaScreen: BehaviorSubject<MediascreenStatusInterface> = new BehaviorSubject(MEDIASCREENSTATUS);
+  private $mediaScreenStatus: BehaviorSubject<MediascreenStatusInterface> = new BehaviorSubject(MEDIASCREENSTATUS);
+  private mediasScreenStatus: MediascreenStatusInterface;
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    public getMediascreen(): Observable<MediascreenStatusInterface> {
-        return this.mediaScreen.asObservable();
-    }
+  public getMediascreenStatus(): MediascreenStatusInterface {
+    this.$mediaScreenStatus.asObservable().subscribe(
+      (response) => {
+        this.mediasScreenStatus = response;
+      });
+    return this.mediasScreenStatus;
+  }
 
-    public setMediascreen(mediascreen: MediascreenStatusInterface) {
-        this.mediaScreen.next(mediascreen);
-    }
+  public setMediascreen(mediascreen: MediascreenStatusInterface) {
+    this.$mediaScreenStatus.next(mediascreen);
+  }
 
 }

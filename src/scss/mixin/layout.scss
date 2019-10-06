@@ -1,4 +1,11 @@
 // mixin only can use in container with position: absolute / fixed
+
+@mixin zoom {
+  left:0;
+  width:100%;
+  margin-left:0;
+}
+
 @mixin layout(
   $mediascreen:null) {
 
@@ -20,6 +27,9 @@
     width: $ms-4-min;
     left: 50%;
     margin-left: -$ms-4-min * 0.5;
+    &.zoom{
+      @include zoom()
+    }
   }
 
   // -- mediascreen5 ---
@@ -27,6 +37,9 @@
     width: $ms-5-min;
     left: 50%;
     margin-left: -$ms-5-min * 0.5;
+    &.zoom{
+      @include zoom()
+    }
   }
 
   // -- mediascreen6 ---
@@ -34,6 +47,9 @@
     width: $ms-6-min;
     left: 50%;
     margin-left: -$ms-6-min * 0.5;
+    &.zoom{
+      @include zoom()
+    }
   }
 
 }

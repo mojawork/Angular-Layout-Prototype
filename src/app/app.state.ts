@@ -10,11 +10,12 @@ export class DataGridCards {
   }
 }
 
+
+
 //@State<AppStateInterface>({
 @State<any>({
   name: 'appstate',
   defaults: {
-    test: 'Wurst',
     datagridcards: dataGridCards,
 
   }

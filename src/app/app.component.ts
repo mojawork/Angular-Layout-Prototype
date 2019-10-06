@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngxs/store';
 
-import {DataGridCards} from './app.state';
 import {GridcardsInterface} from '../data/gridcards.interface';
+import {LayoutService} from './utils/layout/layout.service';
+import {LayoutStatusInterface} from './utils/layout/layout.interface';
+
 
 @Component({
   selector: 'app-root',
@@ -13,15 +15,20 @@ export class AppComponent implements OnInit {
   public title = 'layout';
   public datagridcards: GridcardsInterface[] | null = null;
 
-
-
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private layoutService: LayoutService
+  ) {
   }
 
   ngOnInit() {
     this.store.subscribe((response) => {
       this.datagridcards = response.appstate.datagridcards;
     });
+
+
+
+
   }
 
 }
