@@ -17,19 +17,35 @@
 
     <div>
       <label>{{option.cardColumn.first.name}}:
-        <input [type]="option.cardColumn.first.type" formControlName="cardColumnFirst">
-      </label>
-
-      <label>{{option.cardColumn.even.name}}:
-        <input [type]="option.cardColumn.even.type" formControlName="cardColumnEven">
+        <input [value]="validateCardColums(option.colums.value, option.cardColumn.first.value)"
+               [type]="option.cardColumn.first.type"
+               formControlName="cardColumnFirst"
+               min="1"
+               [max]="option.colums.value">
       </label>
 
       <label>{{option.cardColumn.odd.name}}:
-        <input [type]="option.cardColumn.odd.type" formControlName="cardColumnOdd">
+        <input [value]="validateCardColums(option.colums.value, option.cardColumn.odd.value)"
+               [type]="option.cardColumn.odd.type"
+               formControlName="cardColumnOdd"
+               min="1"
+               [max]="option.colums.value">
+      </label>
+
+      <label>{{option.cardColumn.even.name}}:
+        <input [value]="validateCardColums(option.colums.value, option.cardColumn.even.value)"
+               [type]="option.cardColumn.odd.type"
+               formControlName="cardColumnEven"
+               min="1"
+               [max]="option.colums.value">
       </label>
 
       <label>{{option.cardColumn.last.name}}:
-        <input [type]="option.cardColumn.last.type" formControlName="cardColumnLast">
+        <input [value]="validateCardColums(option.colums.value, option.cardColumn.last.value)"
+               [type]="option.cardColumn.last.type"
+               formControlName="cardColumnLast"
+               min="1"
+               [max]="option.colums.value">
       </label>
     </div>
 

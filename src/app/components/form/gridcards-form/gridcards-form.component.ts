@@ -19,6 +19,14 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
 
   public formgroups: any[] = [];
 
+  public validateCardColums(colums: string, cardColumValue: string): string {
+    if (parseFloat(colums) < parseFloat(cardColumValue)) {
+      console.log('match');
+      return colums;
+    }
+    return cardColumValue;
+  }
+
   public addFromGrpup(): void {
     this.options.forEach((option) => {
       this.formgroups.push(this.formBuilder.group({
@@ -46,19 +54,16 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
       const formValue = this.store.snapshot()[id].model;
 
       gridData.colums.value = formValue.colums;
-      gridData.cardColumn.first.value = formValue.cardColumnFirst;
-      gridData.cardColumn.even.value = formValue.cardColumnEven;
-      gridData.cardColumn.odd.value = formValue.cardColumnOdd;
-      gridData.cardColumn.last.value = formValue.cardColumnLast;
-
+      gridData.cardColumn.first.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnFirst);
+      gridData.cardColumn.odd.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnOdd);
+      gridData.cardColumn.even.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnEven);
+      gridData.cardColumn.last.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnLast);
     });
   }
-
 
   public onSubmit(id) {
     console.log(id);
   }
-
 
   ngOnInit() {
     this.addFromGrpup();

@@ -14,22 +14,22 @@ export const dataGridCards: GridcardsInterface[] = [
     cardColumn: {
       first: {
         name: 'cardColumn first',
-        value: '4',
+        value: '1',
         type: 'number'
       },
       even:  {
         name: 'cardColumn even',
-        value: '2',
+        value: '1',
         type: 'number'
       },
       odd:  {
         name: 'cardColumn odd',
-        value: '2',
+        value: '1',
         type: 'number'
       },
       last:  {
         name: 'cardColumn last',
-        value: '4',
+        value: '1',
         type: 'number'
       }
     },
@@ -43,7 +43,9 @@ export const dataGridCards: GridcardsInterface[] = [
       {content: 'Content 07'},
       {content: 'Content 08'},
       {content: 'Content 09'},
-      {content: 'Content 10'}
+      {content: 'Content 10'},
+      {content: 'Content 11'},
+      {content: 'Content 12'}
     ],
     cardFooter: {
       content: 'Footer'
