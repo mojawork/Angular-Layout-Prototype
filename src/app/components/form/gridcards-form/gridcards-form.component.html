@@ -2,14 +2,15 @@
       [formGroup]="formgroups[i]"
       [ngxsForm]="option.id"
       novalidate
-
       (ngSubmit)="onSubmit(option.id)">
 
   <fieldset>
     <legend>{{option.id}}</legend>
     <div>
       <label>{{option.colums.name}}:
-        <input [type]="option.colums.type" formControlName="colums">
+        <input
+          [formControlName]="option.colums.name"
+          [type]="option.colums.type">
       </label>
     </div>
 
@@ -17,40 +18,43 @@
 
     <div>
       <label>{{option.cardColumn.first.name}}:
-        <input [value]="validateCardColums(option.colums.value, option.cardColumn.first.value)"
-               [type]="option.cardColumn.first.type"
-               formControlName="cardColumnFirst"
-               min="1"
-               [max]="option.colums.value">
+        <input
+          [value]="validateCardColums(option.colums.value, option.cardColumn.first.value)"
+          [formControlName]="option.cardColumn.first.name"
+          [type]="option.cardColumn.first.type"
+          min="1"
+          [max]="option.colums.value">
       </label>
 
       <label>{{option.cardColumn.odd.name}}:
-        <input [value]="validateCardColums(option.colums.value, option.cardColumn.odd.value)"
-               [type]="option.cardColumn.odd.type"
-               formControlName="cardColumnOdd"
-               min="1"
-               [max]="option.colums.value">
+        <input
+          [value]="validateCardColums(option.colums.value, option.cardColumn.odd.value)"
+          [formControlName]="option.cardColumn.odd.name"
+          [type]="option.cardColumn.odd.type"
+          min="1"
+          [max]="option.colums.value">
       </label>
 
       <label>{{option.cardColumn.even.name}}:
-        <input [value]="validateCardColums(option.colums.value, option.cardColumn.even.value)"
-               [type]="option.cardColumn.odd.type"
-               formControlName="cardColumnEven"
-               min="1"
-               [max]="option.colums.value">
+        <input
+          [value]="validateCardColums(option.colums.value, option.cardColumn.even.value)"
+          [formControlName]="option.cardColumn.even.name"
+          [type]="option.cardColumn.odd.type"
+          min="1"
+          [max]="option.colums.value">
       </label>
 
       <label>{{option.cardColumn.last.name}}:
-        <input [value]="validateCardColums(option.colums.value, option.cardColumn.last.value)"
-               [type]="option.cardColumn.last.type"
-               formControlName="cardColumnLast"
-               min="1"
-               [max]="option.colums.value">
+        <input
+          [value]="validateCardColums(option.colums.value, option.cardColumn.last.value)"
+          [formControlName]="option.cardColumn.last.name"
+          [type]="option.cardColumn.last.type"
+          min="1"
+          [max]="option.colums.value">
       </label>
     </div>
 
     <hr>
-
 
     <button type="submit">Submit {{option.id}}</button>
 

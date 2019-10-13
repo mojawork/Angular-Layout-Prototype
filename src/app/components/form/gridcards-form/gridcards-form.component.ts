@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {GridcardsInterface} from '../../../../data/gridcards.interface';
 import {Store} from '@ngxs/store';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {IGridcardsFormControlNames} from './gridcards-form.interface';
 
 @Component({
   selector: 'app-gridcards-form',
@@ -10,18 +11,17 @@ import {FormBuilder} from '@angular/forms';
 })
 export class GridcardsFormComponent implements OnInit, AfterViewInit {
 
-  @Input() public options: GridcardsInterface [];
-
   constructor(
     private store: Store,
     private formBuilder: FormBuilder) {
   }
 
-  public formgroups: any[] = [];
+  @Input() public options: GridcardsInterface [];
+
+  public formgroups: FormGroup  [] = [];
 
   public validateCardColums(colums: string, cardColumValue: string): string {
     if (parseFloat(colums) < parseFloat(cardColumValue)) {
-      console.log('match');
       return colums;
     }
     return cardColumValue;
@@ -29,14 +29,16 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
 
   public addFromGrpup(): void {
     this.options.forEach((option) => {
-      this.formgroups.push(this.formBuilder.group({
-          id: [option.id],
-          colums: [option.colums.value],
-          cardColumnFirst: [option.cardColumn.first.value],
-          cardColumnEven: [option.cardColumn.even.value],
-          cardColumnOdd: [option.cardColumn.odd.value],
-          cardColumnLast: [option.cardColumn.last.value],
-        })
+      const formGroup: IGridcardsFormControlNames = {
+        id: option.id,
+        colums: option.colums.value,
+        cardColumnFirst: option.cardColumn.first.value,
+        cardColumnEven: option.cardColumn.even.value,
+        cardColumnOdd: option.cardColumn.odd.value,
+        cardColumnLast: option.cardColumn.last.value
+      };
+
+      this.formgroups.push(this.formBuilder.group(formGroup)
       );
     });
   }
@@ -44,14 +46,14 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
   public dataMapper(id): void {
     this.store.subscribe((response) => {
       const gridData = response.appstate.datagridcards.find(
-        (result, index, array) => {
+        (result) => {
           if (id === result.id) {
             return result;
           }
         }
       );
 
-      const formValue = this.store.snapshot()[id].model;
+      const formValue: IGridcardsFormControlNames = this.store.snapshot()[id].model;
 
       gridData.colums.value = formValue.colums;
       gridData.cardColumn.first.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnFirst);

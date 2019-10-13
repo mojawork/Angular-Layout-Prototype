@@ -1,3 +1,5 @@
+import {formNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
+
 export interface GridcardsInterface {
   id: string;
   colums: GridcardsValueInterface;
@@ -19,9 +21,10 @@ export interface GridcardHeaderInterface {
 }
 
 export interface GridcardsValueInterface {
-  name: string;
-  value: string;
+  label: string;
+  name: formNames;
   type: string;
+  value: string;
 }
 
 export interface GridcardsContentInterface {

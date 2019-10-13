@@ -4,8 +4,6 @@ import { GridcardsFormComponent } from './gridcards-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxsFormPluginModule} from '@ngxs/form-plugin';
 
-
-
 @NgModule({
   declarations: [GridcardsFormComponent],
   exports: [

@@ -1,10 +1,12 @@
 import {GridcardsInterface} from './gridcards.interface';
+import {formNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
 
 export const dataGridCards: GridcardsInterface[] = [
   {
     id: 'GridID-01',
     colums: {
-      name: 'colums',
+      label: 'colums',
+      name: formNames.colums,
       value: '6',
       type: 'number'
     },
@@ -13,22 +15,26 @@ export const dataGridCards: GridcardsInterface[] = [
     },
     cardColumn: {
       first: {
-        name: 'cardColumn first',
+        label: 'cardColumn first',
+        name: formNames.cardColumnFirst,
         value: '1',
         type: 'number'
       },
-      even:  {
-        name: 'cardColumn even',
+      even: {
+        label: 'cardColumn even',
+        name: formNames.cardColumnEven,
         value: '1',
         type: 'number'
       },
-      odd:  {
-        name: 'cardColumn odd',
+      odd: {
+        label: 'cardColumn odd',
+        name: formNames.cardColumnOdd,
         value: '1',
         type: 'number'
       },
-      last:  {
-        name: 'cardColumn last',
+      last: {
+        label: 'cardColumn last',
+        name: formNames.cardColumnLast,
         value: '1',
         type: 'number'
       }
@@ -54,7 +60,8 @@ export const dataGridCards: GridcardsInterface[] = [
   {
     id: 'GridID-02',
     colums: {
-      name: 'colums',
+      label: 'colums',
+      name: formNames.colums,
       value: '6',
       type: 'number'
     },
@@ -63,22 +70,26 @@ export const dataGridCards: GridcardsInterface[] = [
     },
     cardColumn: {
       first: {
-        name: 'cardColumn first',
+        label: 'cardColumn first',
+        name: formNames.cardColumnFirst,
         value: '4',
         type: 'number'
       },
-      even:  {
-        name: 'cardColumn even',
+      even: {
+        label: 'cardColumn even',
+        name: formNames.cardColumnEven,
         value: '2',
         type: 'number'
       },
-      odd:  {
-        name: 'cardColumn odd',
+      odd: {
+        label: 'cardColumn odd',
+        name: formNames.cardColumnOdd,
         value: '2',
         type: 'number'
       },
-      last:  {
-        name: 'cardColumn last',
+      last: {
+        label: 'cardColumn last',
+        name: formNames.cardColumnLast,
         value: '4',
         type: 'number'
       }
@@ -102,7 +113,8 @@ export const dataGridCards: GridcardsInterface[] = [
   {
     id: 'GridID-03',
     colums: {
-      name: 'colums',
+      label: 'colums',
+      name: formNames.colums,
       value: '3',
       type: 'number'
     },
@@ -111,22 +123,26 @@ export const dataGridCards: GridcardsInterface[] = [
     },
     cardColumn: {
       first: {
-        name: 'cardColumn first',
+        label: 'cardColumn first',
+        name: formNames.cardColumnFirst,
         value: '1',
         type: 'number'
       },
-      even:  {
-        name: 'cardColumn even',
+      even: {
+        label: 'cardColumn even',
+        name: formNames.cardColumnEven,
         value: '1',
         type: 'number'
       },
-      odd:  {
-        name: 'cardColumn odd',
+      odd: {
+        label: 'cardColumn odd',
+        name: formNames.cardColumnOdd,
         value: '1',
         type: 'number'
       },
-      last:  {
-        name: 'cardColumn last',
+      last: {
+        label: 'cardColumn last',
+        name: formNames.cardColumnLast,
         value: '1',
         type: 'number'
       }
@@ -140,9 +156,6 @@ export const dataGridCards: GridcardsInterface[] = [
       content: 'Footer'
     }
   },
-
-
-
 ];
 
 /*
