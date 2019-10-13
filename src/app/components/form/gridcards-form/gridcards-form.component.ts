@@ -3,6 +3,7 @@ import {GridcardsInterface} from '../../../../data/gridcards.interface';
 import {Store} from '@ngxs/store';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {IGridcardsFormControlNames} from './gridcards-form.interface';
+import {LayoutService} from '../../../utils/layout/layout.service';
 
 @Component({
   selector: 'app-gridcards-form',
@@ -13,7 +14,8 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
 
   constructor(
     private store: Store,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private layoutService: LayoutService) {
   }
 
   @Input() public options: GridcardsInterface [];

@@ -1,5 +1,9 @@
 <article [ngStyle]="gridTemplateColums()">
 
+  <div class="form-trigger"
+       (click)="layoutService.setForm(options.id)">
+  </div>
+
   <header
     *ngIf="options.cardHeader"
     [ngStyle]="gridColumHeaderFooter()">

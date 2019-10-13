@@ -1,33 +1,67 @@
 @import "import.scss";
 
-$label-min-width:260px;
+$label-min-width: 260px;
 
 :host {
-  fieldset{
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  right: 0;
+  max-width: 0;
+  min-height: 100%;
+  overflow: hidden;
+  border-left: 2px solid $color-white;
+  background-color: $color-white-transparent;
+
+  &.active {
+    max-width: 60%;
+    overflow-y: auto;
+  }
+
+  form {
+    display: none;
+
+    &.active {
+      display: flex;
+      flex-flow: column;
+      box-sizing: border-box;
+      margin: $margin;
+      width:calc(100% - #{$padding * 2} - 2px);
+      padding: $padding;
+    }
+  }
+
+  fieldset {
     display: flex;
     flex-flow: row wrap;
-    div{
+    background-color: $color-white;
+
+    div {
       display: flex;
       flex-flow: row wrap;
       width: 100%;
     }
   }
-  label{
+
+  label {
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-width: $label-min-width;
     margin: 0 $margin $margin 0;
-    border:1px solid $color-grey;
-    padding:$padding;
-    :last-of-type{
+    border: 1px solid $color-grey;
+    padding: $padding;
+
+    :last-of-type {
       margin-right: 0;
     }
   }
-  input[type="number"]{
+
+  input[type="number"] {
     max-width: 50px;
   }
-  hr{
+
+  hr {
     display: flex;
     width: 100%;
     border-bottom: 1px solid $color-grey;

@@ -1,4 +1,4 @@
-import {formNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
+import {EGridcardsInputNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
 
 export interface GridcardsInterface {
   id: string;
@@ -22,7 +22,7 @@ export interface GridcardHeaderInterface {
 
 export interface GridcardsValueInterface {
   label: string;
-  name: formNames;
+  name: EGridcardsInputNames;
   type: string;
   value: string;
 }

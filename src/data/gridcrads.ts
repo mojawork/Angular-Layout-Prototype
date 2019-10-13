@@ -1,12 +1,12 @@
 import {GridcardsInterface} from './gridcards.interface';
-import {formNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
+import {EGridcardsInputNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
 
 export const dataGridCards: GridcardsInterface[] = [
   {
     id: 'GridID-01',
     colums: {
       label: 'colums',
-      name: formNames.colums,
+      name: EGridcardsInputNames.colums,
       value: '6',
       type: 'number'
     },
@@ -16,25 +16,25 @@ export const dataGridCards: GridcardsInterface[] = [
     cardColumn: {
       first: {
         label: 'cardColumn first',
-        name: formNames.cardColumnFirst,
+        name: EGridcardsInputNames.cardColumnFirst,
         value: '1',
         type: 'number'
       },
       even: {
         label: 'cardColumn even',
-        name: formNames.cardColumnEven,
+        name: EGridcardsInputNames.cardColumnEven,
         value: '1',
         type: 'number'
       },
       odd: {
         label: 'cardColumn odd',
-        name: formNames.cardColumnOdd,
+        name: EGridcardsInputNames.cardColumnOdd,
         value: '1',
         type: 'number'
       },
       last: {
         label: 'cardColumn last',
-        name: formNames.cardColumnLast,
+        name: EGridcardsInputNames.cardColumnLast,
         value: '1',
         type: 'number'
       }
@@ -61,7 +61,7 @@ export const dataGridCards: GridcardsInterface[] = [
     id: 'GridID-02',
     colums: {
       label: 'colums',
-      name: formNames.colums,
+      name: EGridcardsInputNames.colums,
       value: '6',
       type: 'number'
     },
@@ -71,25 +71,25 @@ export const dataGridCards: GridcardsInterface[] = [
     cardColumn: {
       first: {
         label: 'cardColumn first',
-        name: formNames.cardColumnFirst,
+        name: EGridcardsInputNames.cardColumnFirst,
         value: '4',
         type: 'number'
       },
       even: {
         label: 'cardColumn even',
-        name: formNames.cardColumnEven,
+        name: EGridcardsInputNames.cardColumnEven,
         value: '2',
         type: 'number'
       },
       odd: {
         label: 'cardColumn odd',
-        name: formNames.cardColumnOdd,
+        name: EGridcardsInputNames.cardColumnOdd,
         value: '2',
         type: 'number'
       },
       last: {
         label: 'cardColumn last',
-        name: formNames.cardColumnLast,
+        name: EGridcardsInputNames.cardColumnLast,
         value: '4',
         type: 'number'
       }
@@ -114,7 +114,7 @@ export const dataGridCards: GridcardsInterface[] = [
     id: 'GridID-03',
     colums: {
       label: 'colums',
-      name: formNames.colums,
+      name: EGridcardsInputNames.colums,
       value: '3',
       type: 'number'
     },
@@ -124,25 +124,25 @@ export const dataGridCards: GridcardsInterface[] = [
     cardColumn: {
       first: {
         label: 'cardColumn first',
-        name: formNames.cardColumnFirst,
+        name: EGridcardsInputNames.cardColumnFirst,
         value: '1',
         type: 'number'
       },
       even: {
         label: 'cardColumn even',
-        name: formNames.cardColumnEven,
+        name: EGridcardsInputNames.cardColumnEven,
         value: '1',
         type: 'number'
       },
       odd: {
         label: 'cardColumn odd',
-        name: formNames.cardColumnOdd,
+        name: EGridcardsInputNames.cardColumnOdd,
         value: '1',
         type: 'number'
       },
       last: {
         label: 'cardColumn last',
-        name: formNames.cardColumnLast,
+        name: EGridcardsInputNames.cardColumnLast,
         value: '1',
         type: 'number'
       }

@@ -21,7 +21,16 @@ export class LayoutService {
     return this.layoutStatus;
   }
 
-  public setLayoutZoom() {
+  public setForm(formid: string): void {
+    if (this.layoutStatus.formid !== formid) {
+      this.layoutStatus.formid = formid;
+      this.layoutStatus.form = true;
+    } else {
+      this.layoutStatus.form = !this.layoutStatus.form;
+    }
+  }
+
+  public setLayoutZoom(): void {
     this.layoutStatus.zoom = !this.layoutStatus.zoom;
   }
 

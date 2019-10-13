@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GirdCardColumTypeInterface, GridcardsInterface} from '../../../../data/gridcards.interface';
-
-
+import {LayoutService} from '../../../utils/layout/layout.service';
 
 @Component({
   selector: 'app-gridcards-view',
@@ -12,7 +11,9 @@ export class GridcardsViewComponent implements OnInit {
 
   @Input() public options: GridcardsInterface;
 
-  constructor() {
+  constructor(
+    private layoutService: LayoutService
+  ) {
   }
 
 
@@ -47,6 +48,7 @@ export class GridcardsViewComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
 }

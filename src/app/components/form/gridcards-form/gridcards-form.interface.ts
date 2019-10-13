@@ -8,10 +8,9 @@ export class IGridcardsFormControlNames {
   public cardColumnOdd = 'cardColumnOdd';
   public cardColumnLast = 'cardColumnLast';
 }
-
  */
 
-export enum formNames {
+export enum EGridcardsInputNames {
   colums = 'colums',
   cardColumnFirst = 'cardColumnFirst',
   cardColumnEven = 'cardColumnEven',
@@ -22,11 +21,11 @@ export enum formNames {
 
 export interface IGridcardsFormControlNames {
   id: string;
-  [formNames.colums]: string;
-  [formNames.cardColumnFirst]: string;
-  [formNames.cardColumnEven]: string;
-  [formNames.cardColumnOdd]: string;
-  [formNames.cardColumnLast]: string;
+  [EGridcardsInputNames.colums]: string;
+  [EGridcardsInputNames.cardColumnFirst]: string;
+  [EGridcardsInputNames.cardColumnEven]: string;
+  [EGridcardsInputNames.cardColumnOdd]: string;
+  [EGridcardsInputNames.cardColumnLast]: string;
 }
 
 

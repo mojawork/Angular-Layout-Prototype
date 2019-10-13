@@ -6,10 +6,6 @@
       <app-gridcards-view *ngFor="let options of datagridcards" [options]="options"></app-gridcards-view>
     </section>
 
-    <section>
-      <app-gridcards-form [options]="datagridcards"></app-gridcards-form>
-    </section>
-
     <router-outlet></router-outlet>
   </main>
   <footer>footer</footer>
@@ -17,3 +13,10 @@
   <app-mediascreen></app-mediascreen>
 
 </div>
+
+<section>
+  <app-gridcards-form
+    [ngClass]="{'active': layoutService.getLayoutStatus().form}"
+    [options]="datagridcards">
+  </app-gridcards-form>
+</section>

@@ -1,6 +1,8 @@
+
 <form *ngFor="let option of options; let i = index"
       [formGroup]="formgroups[i]"
       [ngxsForm]="option.id"
+      [ngClass]="{'active': option.id === layoutService.getLayoutStatus().formid}"
       novalidate
       (ngSubmit)="onSubmit(option.id)">
 
@@ -58,9 +60,6 @@
 
     <button type="submit">Submit {{option.id}}</button>
 
-
   </fieldset>
 
-
 </form>
-
