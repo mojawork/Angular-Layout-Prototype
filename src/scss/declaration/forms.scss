@@ -1,0 +1,64 @@
+body {
+
+  fieldset {
+    display: flex;
+    padding: $padding;
+    margin: $margin * 2 0;
+    background-color: var(--c-bright);
+    border: $border solid var(--c-thirdly);
+
+    legend {
+      padding: $padding * 0.5 $padding;
+      background-color: var(--c-secondary);
+      border: 1px solid var(--c-thirdly);
+    }
+  }
+
+  input, button {
+    //border: 1px solid var(--c-thirdly);
+    border-radius: $radius;
+    margin-right: $margin;
+    padding: $padding * 0.5;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input {
+    border: $border solid var(--c-thirdly);
+  }
+
+  button {
+    font-weight: $font-weight-bold;
+    color: var(--text-secondary);
+    background-color: var(--c-light);
+    box-shadow: 0 0 $button-shadow 0 var(--text-secondary);
+
+    &:active {
+      box-shadow: 0 0 0 0 !important;
+    }
+  }
+
+  button.success {
+    color: var(--text-bright);
+    background-color: var(--c-success);
+    box-shadow: 0 0 $button-shadow 0 var(--c-success);
+  }
+
+  button.danger {
+    color: var(--text-bright);
+    background-color: var(--c-danger);
+    box-shadow: 0 0 $button-shadow 0 var(--c-danger);
+  }
+
+  button.warning {
+    color: var(--text-bright);
+    background-color: var(--c-warning);
+    box-shadow: 0 0 $button-shadow 0 var(--c-warning);
+  }
+
+}

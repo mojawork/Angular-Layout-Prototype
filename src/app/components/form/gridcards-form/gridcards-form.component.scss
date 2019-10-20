@@ -1,21 +1,41 @@
+// ----------------------------------------------------------------------------
+// Config
 @import "import.scss";
 
 $label-min-width: 260px;
+$active-width: 60%;
+$time: 0.25s;
+// ----------------------------------------------------------------------------
 
 :host {
   position: fixed;
   box-sizing: border-box;
   top: 0;
   right: 0;
-  max-width: 0;
+  width: 0;
   min-height: 100%;
   overflow: hidden;
-  border-left: 2px solid $color-white;
-  background-color: $color-white-transparent;
+  border-left: 2px solid var(--c-bright);
+  background-color: var(--ct-bright);
+  transition: width $time ease-in-out;
 
   &.active {
-    max-width: 60%;
+    width: $active-width;
     overflow-y: auto;
+    @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
+      width: 100%;
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $padding * 0.5;
+    background-color: var(--ct-bright);
+    transform: translateY(0);
+    border-bottom: $border solid var(--c-thirdly);
+    border-left: $border solid var(--c-thirdly);
   }
 
   form {
@@ -26,7 +46,7 @@ $label-min-width: 260px;
       flex-flow: column;
       box-sizing: border-box;
       margin: $margin;
-      width:calc(100% - #{$padding * 2} - 2px);
+      width: calc(100% - #{$padding * 2} - 2px);
       padding: $padding;
     }
   }
@@ -34,7 +54,6 @@ $label-min-width: 260px;
   fieldset {
     display: flex;
     flex-flow: row wrap;
-    background-color: $color-white;
 
     div {
       display: flex;
@@ -49,7 +68,6 @@ $label-min-width: 260px;
     align-items: center;
     min-width: $label-min-width;
     margin: 0 $margin $margin 0;
-    border: 1px solid $color-grey;
     padding: $padding;
 
     :last-of-type {
@@ -59,12 +77,5 @@ $label-min-width: 260px;
 
   input[type="number"] {
     max-width: 50px;
-  }
-
-  hr {
-    display: flex;
-    width: 100%;
-    border-bottom: 1px solid $color-grey;
-    margin: 0 0 $margin;
   }
 }

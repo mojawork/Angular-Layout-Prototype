@@ -1,13 +1,12 @@
-<article [ngStyle]="gridTemplateColums()">
-
-  <div class="form-trigger"
-       (click)="layoutService.setForm(options.id)">
-  </div>
+<article [ngStyle]="gridTemplateColums()" [ngClass]="{'color': color }">
 
   <header
     *ngIf="options.cardHeader"
     [ngStyle]="gridColumHeaderFooter()">
-      {{options.cardHeader.content}}
+      <h1 class="h2">
+        <span class="icons m-pointer" (click)="layoutService.setForm(options.id)">edit</span>
+        {{options.cardHeader.content}}
+      </h1>
   </header>
 
   <section
@@ -21,6 +20,5 @@
     [ngStyle]="gridColumHeaderFooter()">
       {{options.cardFooter.content}}
   </footer>
-
 
 </article>

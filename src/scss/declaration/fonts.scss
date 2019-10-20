@@ -1,0 +1,59 @@
+body {
+
+  // --- mediascreen 01 - 03 ---
+  @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
+    *:not(span) {
+      font-size: $font-size-5 * $font-mobile-factor;
+      line-height: $line-height-5 * $font-mobile-factor;
+    }
+    h1, .h1 {
+      font-size: $font-size-1 * $font-mobile-factor;
+      line-height: $line-height-1 * $font-mobile-factor;
+    }
+    h2, .h2 {
+      font-size: $font-size-2 * $font-mobile-factor;
+      line-height: $line-height-2 * $font-mobile-factor;
+    }
+    h3, .h3 {
+      font-size: $font-size-3 * $font-mobile-factor;
+      line-height: $line-height-3 * $font-mobile-factor;
+    }
+    h4, .h4, strong {
+      font-size: $font-size-4 * $font-mobile-factor;
+      line-height: $line-height-4 * $font-mobile-factor;
+    }
+    small, .small {
+      font-size: $font-size-1 * $font-mobile-factor;
+      line-height: $line-height-1 * $font-mobile-factor;
+    }
+  }
+
+  // --- mediascreen 04 - 06 ---
+  @include mediascreen($mediascreen: 'custom', $min: $ms-4-min) {
+    *:not(span) {
+      font-size: $font-size-5 * $font-desktop-factor;
+      line-height: $line-height-5 * $font-desktop-factor;
+    }
+    h1, .h1 {
+      font-size: $font-size-1 * $font-desktop-factor;
+      line-height: $line-height-1 * $font-desktop-factor;
+    }
+    h2, .h2 {
+      font-size: $font-size-2 * $font-desktop-factor;
+      line-height: $line-height-2 * $font-desktop-factor;
+    }
+    h3, .h3 {
+      font-size: $font-size-3 * $font-desktop-factor;
+      line-height: $line-height-3 * $font-desktop-factor;
+    }
+    h4, .h4, strong {
+      font-size: $font-size-4 * $font-desktop-factor;
+      line-height: $line-height-4 * $font-desktop-factor;
+    }
+    small, .small {
+      font-size: $font-size-1 * $font-desktop-factor;
+      line-height: $line-height-1 * $font-desktop-factor;
+    }
+  }
+
+}

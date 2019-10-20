@@ -1,11 +1,9 @@
 // ----------------------------------------------------------------------------
 // Config
-// ----------------------------------------------------------------------------
 @import "../scss/import";
+$time: 0.4s;
+// ----------------------------------------------------------------------------
 
-// ----------------------------------------------------------------------------
-// Default
-// ----------------------------------------------------------------------------
 .layout {
   display: flex;
   flex-flow: column;
@@ -13,14 +11,17 @@
   top: 0;
   min-height: 100%;
   padding: 0;
-  border: 1px solid $color-grey;
+  border: $border solid var(--c-light);
   border-top: 0;
   border-bottom: 0;
 
   > header {
     flex: 0 0;
     padding: $padding;
-    background-color: $color-grey;
+    background-color: var(--c-headline);
+    .zoom{
+      letter-spacing: - $global-letter-spacing * 8;
+    }
   }
 
   > main {
@@ -30,63 +31,62 @@
     grid-template-columns: 1fr;
     grid-gap: $margin;
 
-
     > section {
       display: flex;
       flex-flow: column;
     }
-
-
   }
 
   > footer {
     flex: 0 0;
     padding: $padding;
-    background-color: $color-grey;
+    background-color: var(--c-bright);
   }
 
-
-  //--- breakpoint 1 ---
+  //--- mediascreen 1 ---
   @include mediascreen($mediascreen: 'ms1') {
-
     @include layout($mediascreen: 'ms1');
-
   }
-  //--- breakpoint 2 ---
+  //--- mediascreen 2 ---
   @include mediascreen($mediascreen: 'ms2') {
     @include layout($mediascreen: 'ms2');
-    .wrapper {
-      overflow: hidden;
-    }
   }
-  //--- breakpoint 3 ---
+  //--- mediascreen 3 ---
   @include mediascreen($mediascreen: 'ms3') {
     @include layout($mediascreen: 'ms3');
-    .wrapper {
-      overflow: hidden;
-    }
   }
-  //--- breakpoint 4 ---
+  //--- mediascreen 4 ---
   @include mediascreen($mediascreen: 'ms4') {
+    transition: $time ease-in-out;
     @include layout($mediascreen: 'ms4');
-    .wrapper {
-      overflow: hidden;
-    }
   }
-  //--- breakpoint 5 ---
+  //--- mediascreen 5 ---
   @include mediascreen($mediascreen: 'ms5') {
+    transition: $time ease-in-out;
     @include layout($mediascreen: 'ms5');
   }
-  //--- breakpoint 6 ---
+  //--- mediascreen 6 ---
   @include mediascreen($mediascreen: 'ms6') {
+    transition: $time ease-in-out;
     @include layout($mediascreen: 'ms6');
   }
 }
 
 // ----------------------------------------------------------------------------
-// Modifire
-// ----------------------------------------------------------------------------
+// Colors
+.layout.color {
+  border: $border solid var(--c-light);
 
-.fixed {
-  position: fixed;
+  > header {
+    color: var(--text-bright);
+    background-color: var(--c-primary);
+  }
+
+  > main {
+    background-color: var(--c-bright);
+  }
+
+  > footer {
+    background-color: var(--c-light);
+  }
 }

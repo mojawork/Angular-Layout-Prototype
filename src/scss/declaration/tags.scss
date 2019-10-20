@@ -1,0 +1,6 @@
+hr {
+  display: flex;
+  width: 100%;
+  border-bottom: $border solid var(--c-thirdly);
+  margin: 0 0 $margin;
+}

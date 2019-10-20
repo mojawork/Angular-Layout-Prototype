@@ -1,5 +1,15 @@
-<div class="layout" [ngClass]="{'zoom': layoutService.getLayoutStatus().zoom}">
-  <header (click)="layoutService.setLayoutZoom()">header</header>
+<div class="layout" [ngClass]="{
+    'color': color ,
+    'm-zoom': layoutService.getLayoutStatus().zoom,
+    'm-edit': layoutService.getLayoutStatus().form
+    }">
+  <header>
+    <strong class="h1">
+      <span class="icons m-pointer zoom" (click)="layoutService.setLayoutZoom()">{{zoomIcons()}}</span>
+      Header
+
+    </strong>
+  </header>
   <main>
 
     <section>
@@ -8,7 +18,9 @@
 
     <router-outlet></router-outlet>
   </main>
-  <footer>footer</footer>
+  <footer>
+    <strong class="h2">Footer</strong>
+  </footer>
 
   <app-mediascreen></app-mediascreen>
 

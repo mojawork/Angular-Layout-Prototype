@@ -9,13 +9,13 @@ import {LayoutService} from '../../../utils/layout/layout.service';
 })
 export class GridcardsViewComponent implements OnInit {
 
+  public color = true;
   @Input() public options: GridcardsInterface;
 
   constructor(
     private layoutService: LayoutService
   ) {
   }
-
 
   public gridTemplateColums() {
     let colums = '1fr';

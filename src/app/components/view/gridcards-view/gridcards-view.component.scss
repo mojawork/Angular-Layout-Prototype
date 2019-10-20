@@ -1,4 +1,7 @@
-@import "import.scss";
+// ----------------------------------------------------------------------------
+// Config
+@import "../scss/import";
+// ----------------------------------------------------------------------------
 
 :host {
   article {
@@ -9,32 +12,34 @@
 
     > * {
       padding: $padding;
-      background-color: $color-blue-light;
-    }
-
-    > *:nth-child(odd) {
-      padding: $padding;
-      background-color: $color-grey-light;
     }
 
     header, footer {
       grid-column: span 2;
+    }
+  }
+  // --- sets ---
 
-      &::first-letter {
+  /*
+  &.set-4-1-4 {
+    grid-template-columns: 4fr 1fr 4fr;
 
-        font-weight: bold;
-        font-size: $font-size-4;
-      }
-
-      background-color: $color-blue !important;
-      color: $color-white;
-
+    header, footer {
+      grid-column: span 3;
     }
 
     @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
+      grid-template-columns: 1fr 1fr;
+      section:nth-of-type(3n+2) {
 
+        display: none;
+      }
+      header, footer {
+        grid-column: span 2;
+      }
 
     }
+
     @include mediascreen($mediascreen: 'custom', $max: $ms-2-max) {
       grid-template-columns: 1fr;
       header, footer {
@@ -42,34 +47,30 @@
       }
     }
 
-    // --- sets ---
+  }
+  */
 
-    &.set-4-1-4 {
-      grid-template-columns: 4fr 1fr 4fr;
+}
 
-      header, footer {
-        grid-column: span 3;
-      }
+// ----------------------------------------------------------------------------
+// Colors
+:host {
+  article.color {
+    > * {
+      background-color: var(--c-secondary);
+    }
 
-      @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
-        grid-template-columns: 1fr 1fr;
-        section:nth-of-type(3n+2) {
+    > *:nth-child(odd) {
+      background-color: var(--c-thirdly);
+    }
 
-          display: none;
-        }
-        header, footer {
-          grid-column: span 2;
-        }
+    header {
+      color: var(--text-bright);
+      background-color: var(--c-primary);
+    }
 
-      }
-
-      @include mediascreen($mediascreen: 'custom', $max: $ms-2-max) {
-        grid-template-columns: 1fr;
-        header, footer {
-          grid-column: span 1;
-        }
-      }
-
+    footer {
+      background-color: var(--c-primary);
     }
 
   }

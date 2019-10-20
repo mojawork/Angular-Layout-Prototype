@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngxs/store';
-
 import {GridcardsInterface} from '../data/gridcards.interface';
 import {LayoutService} from './utils/layout/layout.service';
-import {LayoutStatusInterface} from './utils/layout/layout.interface';
-
 
 @Component({
   selector: 'app-root',
@@ -13,7 +10,13 @@ import {LayoutStatusInterface} from './utils/layout/layout.interface';
 })
 export class AppComponent implements OnInit {
   public title = 'layout';
+  public color = true;
   public datagridcards: GridcardsInterface[] | null = null;
+  public zoom: boolean = this.layoutService.getLayoutStatus().zoom;
+
+  public zoomIcons(): string {
+    return this.layoutService.getLayoutStatus().zoom ? 'chevron_right chevron_left' : 'chevron_left chevron_right';
+  }
 
   constructor(
     private store: Store,
@@ -25,8 +28,6 @@ export class AppComponent implements OnInit {
     this.store.subscribe((response) => {
       this.datagridcards = response.appstate.datagridcards;
     });
-
-
 
 
   }
