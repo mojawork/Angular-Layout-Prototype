@@ -1,24 +1,26 @@
-<article [ngStyle]="gridTemplateColums()" [ngClass]="{'color': color }">
 
-  <header
-    *ngIf="options.cardHeader"
-    [ngStyle]="gridColumHeaderFooter()">
-      <h1 class="h2">
-        <span class="icons m-pointer" (click)="layoutService.setForm(options.id)">edit</span>
-        {{options.cardHeader.content}}
-      </h1>
-  </header>
+<article [ngStyle]="gridTemplateColums()" [class]="options.theme?.selected" [ngClass]="{'color': options.theme}">
 
-  <section
-    *ngFor="let card of options.cardContent; first as isFirst; last as isLast; even as isEven; odd as isOdd"
-    [ngStyle]="gridColumcard({'first': isFirst,'last': isLast, 'even': isEven, 'odd':isOdd})">
-    {{card.content}}
-  </section>
+    <header
+      *ngIf="options.cardHeader"
+      [ngStyle]="gridColumHeaderFooter()">
+        <h1 class="h2">
+          <span *ngIf="layoutService.getLayoutStatus().edit" class="icons m-pointer" (click)="layoutService.setForm(options.id)">edit</span>
+          {{options.cardHeader.content}}
+        </h1>
+    </header>
 
-  <footer
-    *ngIf="options.cardFooter"
-    [ngStyle]="gridColumHeaderFooter()">
-      {{options.cardFooter.content}}
-  </footer>
+    <section
+      *ngFor="let card of options.cardContent; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+      [ngStyle]="gridColumcard({'first': isFirst,'last': isLast, 'even': isEven, 'odd':isOdd})">
+      {{card.content}}
+    </section>
 
-</article>
+    <footer
+      *ngIf="options.cardFooter"
+      [ngStyle]="gridColumHeaderFooter()">
+        {{options.cardFooter.content}}
+    </footer>
+
+  </article>
+

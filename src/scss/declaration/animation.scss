@@ -1,0 +1,11 @@
+@keyframes label-move {
+  0% {
+    min-width: 10%
+  }
+  20% {
+    min-width: 60%;
+  }
+  100% {
+    min-width: 10%;
+  }
+}

@@ -17,6 +17,7 @@ export class GridcardsViewComponent implements OnInit {
   ) {
   }
 
+
   public gridTemplateColums() {
     let colums = '1fr';
     for (let i = 0; i < (parseFloat(this.options.colums.value) - 1); i++) {

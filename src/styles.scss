@@ -9,7 +9,7 @@ body, html {
   padding: 0;
   height: 100%;
   font-size: $global-font-size;
-  background-color: transparent;
+  background-color: var(--c-background);
 }
 
 body {
@@ -21,6 +21,7 @@ body {
     font-weight: $global-font-weight;
     text-decoration: $global-text-decoration;
     letter-spacing: $global-letter-spacing;
+    color: var(--text-primary);
     margin: 0;
     padding: 0;
     border: 0;
@@ -40,6 +41,7 @@ body {
 
 // ----------------------------------------------------------------------------
 // Imports internal
+@import "scss/declaration/animation";
 @import "scss/declaration/colors";
 @import "scss/declaration/fonts";
 @import "scss/declaration/tags";

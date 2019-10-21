@@ -1,5 +1,6 @@
 export interface LayoutStatusInterface {
+  edit: boolean;
   form: boolean;
-  formid: string | null
+  formid: string | null;
   zoom: boolean;
 }

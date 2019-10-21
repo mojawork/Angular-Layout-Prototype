@@ -1,5 +1,8 @@
-body {
+// ----------------------------------------------------------------------------
+$time: 0.5s;
+// ----------------------------------------------------------------------------
 
+body {
   fieldset {
     display: flex;
     padding: $padding;
@@ -11,15 +14,20 @@ body {
       padding: $padding * 0.5 $padding;
       background-color: var(--c-secondary);
       border: 1px solid var(--c-thirdly);
+
+      &.move {
+
+        animation-name: label-move;
+        animation-duration: $time;
+      }
     }
   }
 
-  input, button {
-    //border: 1px solid var(--c-thirdly);
+  input, select, button {
     border-radius: $radius;
     margin-right: $margin;
     padding: $padding * 0.5;
-    background-color: transparent;
+    background-color: var(--c-background);
     cursor: pointer;
     -webkit-appearance: none;
 
@@ -28,8 +36,13 @@ body {
     }
   }
 
-  input {
+  input, select {
     border: $border solid var(--c-thirdly);
+  }
+
+  input[type=number] {
+    //-moz-appearance: textfield;
+    // appearance: textfield;
   }
 
   button {

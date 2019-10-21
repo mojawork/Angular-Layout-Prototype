@@ -1,4 +1,3 @@
-
 /*
 export class IGridcardsFormControlNames {
   public id = 'id';
@@ -10,17 +9,21 @@ export class IGridcardsFormControlNames {
 }
  */
 
+import {EThemes} from '../../../app.interface';
+
 export enum EGridcardsInputNames {
+  theme = 'theme',
   colums = 'colums',
   cardColumnFirst = 'cardColumnFirst',
   cardColumnEven = 'cardColumnEven',
   cardColumnOdd = 'cardColumnOdd',
-  cardColumnLast  = 'cardColumnLast',
+  cardColumnLast = 'cardColumnLast',
 }
 
 
 export interface IGridcardsFormControlNames {
   id: string;
+  [EGridcardsInputNames.theme]: EThemes | null;
   [EGridcardsInputNames.colums]: string;
   [EGridcardsInputNames.cardColumnFirst]: string;
   [EGridcardsInputNames.cardColumnEven]: string;

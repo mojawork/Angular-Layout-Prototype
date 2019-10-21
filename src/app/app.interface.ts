@@ -1,7 +1,15 @@
-import {GridcardsInterface} from '../data/gridcards.interface';
+import {GridcardsInterface, GridcardsSelectThemeInterface} from '../data/gridcards.interface';
 
 export interface AppStateInterface {
-  test: string;
   datagridcards: GridcardsInterface [];
+  datagridcardsdefault: {
+    theme: GridcardsSelectThemeInterface
+  };
 
+}
+
+export enum EThemes {
+  Default = 'theme-default',
+  Pinkpanter = 'theme-pinkpanter',
+  Dark = 'theme-dark',
 }

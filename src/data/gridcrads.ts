@@ -1,9 +1,12 @@
 import {GridcardsInterface} from './gridcards.interface';
 import {EGridcardsInputNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
+import {EThemes} from '../app/app.interface';
+
 
 export const dataGridCards: GridcardsInterface[] = [
   {
     id: 'GridID-01',
+    theme: null,
     colums: {
       label: 'colums',
       name: EGridcardsInputNames.colums,
@@ -59,6 +62,11 @@ export const dataGridCards: GridcardsInterface[] = [
   },
   {
     id: 'GridID-02',
+    theme: {
+      label: 'Theme',
+      name: EGridcardsInputNames.theme,
+      selected: EThemes.Default
+    },
     colums: {
       label: 'colums',
       name: EGridcardsInputNames.colums,
@@ -112,6 +120,11 @@ export const dataGridCards: GridcardsInterface[] = [
   },
   {
     id: 'GridID-03',
+    theme: {
+      label: 'Theme',
+      name: EGridcardsInputNames.theme,
+      selected: EThemes.Dark
+    },
     colums: {
       label: 'colums',
       name: EGridcardsInputNames.colums,
@@ -157,6 +170,7 @@ export const dataGridCards: GridcardsInterface[] = [
     }
   },
 ];
+
 
 /*
 export const dataGridCards: GridcardsInterface[] = [

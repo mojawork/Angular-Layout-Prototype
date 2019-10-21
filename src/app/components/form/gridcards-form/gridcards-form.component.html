@@ -1,13 +1,35 @@
-<form *ngFor="let option of options; let i = index"
+
+<form *ngFor="let option of dataGridCards; let i = index"
       [formGroup]="formgroups[i]"
       [ngxsForm]="option.id"
-      [ngClass]="{'active': option.id === layoutService.getLayoutStatus().formid}"
+      [ngClass]="{'active':true}"
       novalidate
       (ngSubmit)="onSubmit(option.id)">
   <span class="h1 icons m-pointer close" (click)="layoutService.setForm(option.id)">close</span>
 
+  <!-- [ngClass]="{'active': option.id === layoutService.getLayoutStatus().formid}" //-->
+
   <fieldset>
-    <legend>{{option.id}}</legend>
+    <legend class="move">{{option.id}}</legend>
+
+    <button (click)="addTheme(option.id)">add theme</button>
+
+    <span>{{option.theme?.selected}}</span>
+
+    <div *ngIf="option.theme">
+      <label>{{option.theme.name}}:
+        <select [formControlName]="option.theme.name">
+          <option
+            *ngFor="let theme of themes  | keyvalue"
+            [value]="theme.value">
+            {{theme.key}}
+          </option>
+        </select>
+      </label>
+    </div>
+
+    <hr>
+
     <div>
       <label>{{option.colums.name}}:
         <input

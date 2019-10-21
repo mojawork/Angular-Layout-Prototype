@@ -13,9 +13,12 @@
     > * {
       padding: $padding;
     }
-
     header, footer {
       grid-column: span 2;
+    }
+    section{
+      max-width: 100%;
+      overflow: hidden;
     }
   }
   // --- sets ---
@@ -56,6 +59,7 @@
 // Colors
 :host {
   article.color {
+    background-color: var(--c-background);
     > * {
       background-color: var(--c-secondary);
     }
