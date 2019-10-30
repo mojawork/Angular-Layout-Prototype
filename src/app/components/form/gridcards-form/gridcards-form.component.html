@@ -1,26 +1,25 @@
 
-<form *ngFor="let option of dataGridCards; let i = index"
-      [formGroup]="formgroups[i]"
-      [ngxsForm]="option.id"
-      [ngClass]="{'active':true}"
+<form *ngIf="dataGridCard"
+      [formGroup]="formgroupGridCard"
       novalidate
-      (ngSubmit)="onSubmit(option.id)">
-  <span class="h1 icons m-pointer close" (click)="layoutService.setForm(option.id)">close</span>
+      (ngSubmit)="onSubmit(dataGridCard.id)">
+  <span class="h1 icons m-pointer close">close</span>
 
   <!-- [ngClass]="{'active': option.id === layoutService.getLayoutStatus().formid}" //-->
 
   <fieldset>
-    <legend class="move">{{option.id}}</legend>
+    <legend class="move">{{dataGridCard.id}}</legend>
 
-    <button (click)="addTheme(option.id)">add theme</button>
+    <button (click)="addTheme()">add theme</button>
+    <button (click)="removeTheme()">remove theme</button>
 
-    <span>{{option.theme?.selected}}</span>
+    <span>{{dataGridCard.theme?.selected}}</span>
 
-    <div *ngIf="option.theme">
-      <label>{{option.theme.name}}:
-        <select [formControlName]="option.theme.name">
+    <div *ngIf="dataGridCard.theme">
+      <label>{{dataGridCard.theme.name}}:
+        <select [formControlName]="dataGridCard.theme.name">
           <option
-            *ngFor="let theme of themes  | keyvalue"
+            *ngFor="let theme of themeGridCard  | keyvalue"
             [value]="theme.value">
             {{theme.key}}
           </option>
@@ -31,56 +30,56 @@
     <hr>
 
     <div>
-      <label>{{option.colums.name}}:
+      <label>{{dataGridCard.colums.name}}:
         <input
-          [formControlName]="option.colums.name"
-          [type]="option.colums.type">
+          [formControlName]="dataGridCard.colums.name"
+          [type]="dataGridCard.colums.type">
       </label>
     </div>
 
     <hr>
 
     <div>
-      <label>{{option.cardColumn.first.name}}:
+      <label>{{dataGridCard.cardColumn.first.name}}:
         <input
-          [value]="validateCardColums(option.colums.value, option.cardColumn.first.value)"
-          [formControlName]="option.cardColumn.first.name"
-          [type]="option.cardColumn.first.type"
+          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.first.value)"
+          [formControlName]="dataGridCard.cardColumn.first.name"
+          [type]="dataGridCard.cardColumn.first.type"
           min="1"
-          [max]="option.colums.value">
+          [max]="dataGridCard.colums.value">
       </label>
 
-      <label>{{option.cardColumn.odd.name}}:
+      <label>{{dataGridCard.cardColumn.odd.name}}:
         <input
-          [value]="validateCardColums(option.colums.value, option.cardColumn.odd.value)"
-          [formControlName]="option.cardColumn.odd.name"
-          [type]="option.cardColumn.odd.type"
+          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.odd.value)"
+          [formControlName]="dataGridCard.cardColumn.odd.name"
+          [type]="dataGridCard.cardColumn.odd.type"
           min="1"
-          [max]="option.colums.value">
+          [max]="dataGridCard.colums.value">
       </label>
 
-      <label>{{option.cardColumn.even.name}}:
+      <label>{{dataGridCard.cardColumn.even.name}}:
         <input
-          [value]="validateCardColums(option.colums.value, option.cardColumn.even.value)"
-          [formControlName]="option.cardColumn.even.name"
-          [type]="option.cardColumn.odd.type"
+          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.even.value)"
+          [formControlName]="dataGridCard.cardColumn.even.name"
+          [type]="dataGridCard.cardColumn.odd.type"
           min="1"
-          [max]="option.colums.value">
+          [max]="dataGridCard.colums.value">
       </label>
 
-      <label>{{option.cardColumn.last.name}}:
+      <label>{{dataGridCard.cardColumn.last.name}}:
         <input
-          [value]="validateCardColums(option.colums.value, option.cardColumn.last.value)"
-          [formControlName]="option.cardColumn.last.name"
-          [type]="option.cardColumn.last.type"
+          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.last.value)"
+          [formControlName]="dataGridCard.cardColumn.last.name"
+          [type]="dataGridCard.cardColumn.last.type"
           min="1"
-          [max]="option.colums.value">
+          [max]="dataGridCard.colums.value">
       </label>
     </div>
 
     <hr>
 
-    <button class="success" type="submit">Submit {{option.id}}</button>
+    <button class="success" type="submit">Submit {{dataGridCard.id}}</button>
 
   </fieldset>
 

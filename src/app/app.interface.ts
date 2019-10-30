@@ -2,6 +2,7 @@ import {GridcardsInterface, GridcardsSelectThemeInterface} from '../data/gridcar
 
 export interface AppStateInterface {
   datagridcards: GridcardsInterface [];
+  datagridcardTemp: GridcardsInterface | null;
   datagridcardsdefault: {
     theme: GridcardsSelectThemeInterface
   };

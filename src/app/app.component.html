@@ -13,7 +13,7 @@
   <main>
 
     <section>
-      <app-gridcards-view *ngFor="let options of datagridcards" [options]="options"></app-gridcards-view>
+      <app-gridcards-view [datagridcards]="datagridcards"></app-gridcards-view>
     </section>
 
     <router-outlet></router-outlet>
@@ -27,8 +27,10 @@
 </div>
 
 <section>
-  <app-gridcards-form
+
+  <app-gridcards-form *ngIf="datagridcardTemp"
     [ngClass]="{'active': layoutService.getLayoutStatus().form}"
-    [options]="datagridcards">
+    >
   </app-gridcards-form>
+
 </section>

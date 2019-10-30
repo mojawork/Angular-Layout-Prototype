@@ -1,17 +1,19 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {GridcardsInterface} from '../../../../data/gridcards.interface';
 import {Store} from '@ngxs/store';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EGridcardsInputNames, IGridcardsFormControlNames} from './gridcards-form.interface';
 import {LayoutService} from '../../../utils/layout/layout.service';
 import {EThemes} from '../../../app.interface';
+import {DataThemeDefault2} from '../../../../data/gridcradsdefaults';
+
 
 @Component({
   selector: 'app-gridcards-form',
   templateUrl: './gridcards-form.component.html',
   styleUrls: ['./gridcards-form.component.scss']
 })
-export class GridcardsFormComponent implements OnInit, AfterViewInit {
+export class GridcardsFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store,
@@ -20,12 +22,10 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
   ) {
   }
 
-  @Input() public options: GridcardsInterface [];
+  public dataGridCard: GridcardsInterface | null = null;
+  public formgroupGridCard: FormGroup;
+  public themeGridCard = EThemes;
 
-  public formgroups: FormGroup  [] = [];
-  public themes = EThemes;
-
-  public dataGridCards: GridcardsInterface[];
 
   public validateCardColums(colums: string, cardColumValue: string): string {
     if (parseFloat(colums) < parseFloat(cardColumValue)) {
@@ -35,68 +35,43 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
   }
 
   public addFromGrpup(): void {
-    this.dataGridCards.forEach((option) => {
-      const formGroup: IGridcardsFormControlNames = {
-        id: option.id,
-        [EGridcardsInputNames.theme]: option.theme ? option.theme.selected : null, // EThemes.Dark,
-        [EGridcardsInputNames.colums]: option.colums.value,
-        [EGridcardsInputNames.cardColumnFirst]: option.cardColumn.first.value,
-        [EGridcardsInputNames.cardColumnEven]: option.cardColumn.even.value,
-        [EGridcardsInputNames.cardColumnOdd]: option.cardColumn.odd.value,
-        [EGridcardsInputNames.cardColumnLast]: option.cardColumn.last.value
-      };
-      this.formgroups.push(this.formBuilder.group(formGroup)
-      );
-    });
+    const formGroup: IGridcardsFormControlNames = {
+      id: this.dataGridCard.id,
+
+      [EGridcardsInputNames.theme]: this.dataGridCard.theme ? this.dataGridCard.theme.selected : EThemes.Default,
+      [EGridcardsInputNames.colums]: this.dataGridCard.colums.value,
+      [EGridcardsInputNames.cardColumnFirst]: this.dataGridCard.cardColumn.first.value,
+      [EGridcardsInputNames.cardColumnEven]: this.dataGridCard.cardColumn.even.value,
+      [EGridcardsInputNames.cardColumnOdd]: this.dataGridCard.cardColumn.odd.value,
+      [EGridcardsInputNames.cardColumnLast]: this.dataGridCard.cardColumn.last.value
+    };
+    this.formgroupGridCard = this.formBuilder.group(formGroup);
   }
 
-
-  public getDataGridcards(id: string, response: GridcardsInterface[]): GridcardsInterface {
-    console.log(id);
-    return response.find(
-      (result) => {
-        if (id === result.id) {
-          return result;
-        }
-      });
+  public addTheme(): void {
+    this.dataGridCard.theme = !this.dataGridCard.theme ? this.store.snapshot().appstate.datagridcardsdefault.theme : null;
+    this.dataGridCard.theme = DataThemeDefault2();
+    this.formgroupGridCard.patchValue({theme: DataThemeDefault2().selected});
   }
 
-  public addTheme(id: string): void {
+  public removeTheme(): void {
+    // this.dataGridCard.theme = !this.dataGridCard.theme ? this.store.snapshot().appstate.datagridcardsdefault.theme : null;
+    this.dataGridCard.theme = null;
+  }
 
-    const gridData = this.getDataGridcards(id, this.dataGridCards);
-    if (!gridData.theme) {
-      gridData.theme = this.store.snapshot().appstate.datagridcardsdefault.theme;
+  public dataMapper(values: IGridcardsFormControlNames): void {
+
+    this.dataGridCard.colums.value = values.colums;
+    this.dataGridCard.cardColumn.first.value = this.validateCardColums(this.dataGridCard.colums.value, values.cardColumnFirst);
+    this.dataGridCard.cardColumn.odd.value = this.validateCardColums(this.dataGridCard.colums.value, values.cardColumnOdd);
+    this.dataGridCard.cardColumn.even.value = this.validateCardColums(this.dataGridCard.colums.value, values.cardColumnEven);
+    this.dataGridCard.cardColumn.last.value = this.validateCardColums(this.dataGridCard.colums.value, values.cardColumnLast);
+
+    if (this.dataGridCard.theme) {
+      this.dataGridCard.theme.selected = values[EGridcardsInputNames.theme];
     } else {
-      gridData.theme = null;
+      this.dataGridCard.theme = null;
     }
-  }
-
-  public dataMapper(): void {
-
-    // this.store.subscribe((response) => {
-    this.dataGridCards.forEach((dataGridCard) => {
-
-    if (this.store.snapshot()[dataGridCard.id]) {
-
-        // const formValue: IGridcardsFormControlNames = this.store.snapshot()[id].model;
-        const gridData = this.getDataGridcards(dataGridCard.id, this.dataGridCards);
-        const formValue = this.store.selectSnapshot<any>((state: any) => state[dataGridCard.id].model);
-
-        if (gridData.theme) {
-          gridData.theme.selected = formValue[EGridcardsInputNames.theme];
-          console.log(dataGridCard.id , formValue.id, gridData.theme.selected, formValue[EGridcardsInputNames.theme]);
-        }
-        gridData.colums.value = formValue.colums;
-        gridData.cardColumn.first.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnFirst);
-        gridData.cardColumn.odd.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnOdd);
-        gridData.cardColumn.even.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnEven);
-        gridData.cardColumn.last.value = this.validateCardColums(gridData.colums.value, formValue.cardColumnLast);
-
-        // console.log('response', response[id].model);
-       }
-
-    });
-    // });
   }
 
   public onSubmit(id) {
@@ -106,28 +81,26 @@ export class GridcardsFormComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
     this.store.subscribe((response) => {
-      this.dataGridCards = response.appstate.datagridcards;
-//       this.dataGridCards.forEach((option) => {
-        // this.dataMapper(option.id);
-//      });
+      this.dataGridCard = response.appstate.datagridcardTemp;
 
-      this.dataMapper();
+      if (this.dataGridCard) {
+        this.addFromGrpup();
+      }
+
+      if (this.dataGridCard) {
+        this.formgroupGridCard.valueChanges.subscribe((values => {
+          this.dataMapper(values);
+        }));
+      }
 
     });
+  }
 
-    this.addFromGrpup();
+  ngOnDestroy() {
 
-
-
-
-    // this.test(this.options[0].id);
+    console.log('destroy');
 
   }
 
-  ngAfterViewInit() {
-
-
-
-  }
 
 }

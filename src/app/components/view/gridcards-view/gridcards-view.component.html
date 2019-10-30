@@ -1,26 +1,37 @@
+<ng-container *ngFor="let datagridcard of datagridcards">
 
-<article [ngStyle]="gridTemplateColums()" [class]="options.theme?.selected" [ngClass]="{'color': options.theme}">
+  <article [ngStyle]="gridTemplateColums(datagridcard)" [class]="datagridcard.theme?.selected"
+           [ngClass]="{'color': datagridcard.theme}">
 
     <header
-      *ngIf="options.cardHeader"
-      [ngStyle]="gridColumHeaderFooter()">
-        <h1 class="h2">
-          <span *ngIf="layoutService.getLayoutStatus().edit" class="icons m-pointer" (click)="layoutService.setForm(options.id)">edit</span>
-          {{options.cardHeader.content}}
-        </h1>
+      *ngIf="datagridcard.cardHeader"
+      [ngStyle]="gridColumHeaderFooter(datagridcard)">
+      <h1 class="h2">
+        <span *ngIf="layoutService.getLayoutStatus().edit" class="icons m-pointer"
+              (click)="setGridCardForm(datagridcard)">edit</span>
+        {{datagridcard.cardHeader.content}}
+      </h1>
     </header>
 
     <section
-      *ngFor="let card of options.cardContent; first as isFirst; last as isLast; even as isEven; odd as isOdd"
-      [ngStyle]="gridColumcard({'first': isFirst,'last': isLast, 'even': isEven, 'odd':isOdd})">
+      *ngFor="let card of datagridcard.cardContent; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+      [ngStyle]="gridColumcard(
+            datagridcard,{
+              'first': isFirst,
+              'last': isLast,
+              'even': isEven,
+               'odd':isOdd
+               })">
       {{card.content}}
     </section>
 
     <footer
-      *ngIf="options.cardFooter"
-      [ngStyle]="gridColumHeaderFooter()">
-        {{options.cardFooter.content}}
+      *ngIf="datagridcard.cardFooter"
+      [ngStyle]="gridColumHeaderFooter(datagridcard)">
+      {{datagridcard.cardFooter.content}}
     </footer>
 
   </article>
 
+
+</ng-container>

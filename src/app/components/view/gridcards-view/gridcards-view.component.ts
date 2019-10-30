@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GirdCardColumTypeInterface, GridcardsInterface} from '../../../../data/gridcards.interface';
 import {LayoutService} from '../../../utils/layout/layout.service';
+import {Store} from '@ngxs/store';
+import {DataGridCardTemp} from '../../../app.state';
 
 @Component({
   selector: 'app-gridcards-view',
@@ -10,41 +12,47 @@ import {LayoutService} from '../../../utils/layout/layout.service';
 export class GridcardsViewComponent implements OnInit {
 
   public color = true;
-  @Input() public options: GridcardsInterface;
+  @Input() public datagridcards: GridcardsInterface [];
 
   constructor(
+    private store: Store,
     private layoutService: LayoutService
   ) {
   }
 
+  public gridTemplateColums(datagridcard: GridcardsInterface) {
 
-  public gridTemplateColums() {
     let colums = '1fr';
-    for (let i = 0; i < (parseFloat(this.options.colums.value) - 1); i++) {
+    for (let i = 0; i < (parseFloat(datagridcard.colums.value) - 1); i++) {
       colums = `${colums}  1fr`;
     }
     return {'grid-template-columns': colums};
   }
 
-  public gridColumcard(type: GirdCardColumTypeInterface) {
-    if (this.options.cardColumn && type.first) {
-      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.first.value)};
+  public gridColumcard(datagridcard: GridcardsInterface, type: GirdCardColumTypeInterface) {
+
+    if (datagridcard.cardColumn && type.first) {
+      return {'grid-column': 'span ' + parseFloat(datagridcard.cardColumn.first.value)};
     }
-    if (this.options.cardColumn && type.even && !type.first && !type.last) {
-      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.even.value)};
+    if (datagridcard.cardColumn && type.even && !type.first && !type.last) {
+      return {'grid-column': 'span ' + parseFloat(datagridcard.cardColumn.even.value)};
     }
-    if (this.options.cardColumn && type.odd && !type.first && !type.last) {
-      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.odd.value)};
+    if (datagridcard.cardColumn && type.odd && !type.first && !type.last) {
+      return {'grid-column': 'span ' + parseFloat(datagridcard.cardColumn.odd.value)};
     }
-    if (this.options.cardColumn && type.last) {
-      return {'grid-column': 'span ' + parseFloat(this.options.cardColumn.last.value)};
+    if (datagridcard.cardColumn && type.last) {
+      return {'grid-column': 'span ' + parseFloat(datagridcard.cardColumn.last.value)};
     }
     return {'grid-column': 'span 1'};
-
   }
 
-  public gridColumHeaderFooter() {
-    return {'grid-column': 'span ' + parseFloat(this.options.colums.value)};
+  public gridColumHeaderFooter(datagridcard: GridcardsInterface) {
+    return {'grid-column': 'span ' + parseFloat(datagridcard.colums.value)};
+  }
+
+  public setGridCardForm(datagridcard: GridcardsInterface) {
+    this.store.dispatch( new DataGridCardTemp (datagridcard));
+    //this.layoutService.setForm(dataGridCard.id);
   }
 
 

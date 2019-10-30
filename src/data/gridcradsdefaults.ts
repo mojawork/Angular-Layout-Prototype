@@ -7,3 +7,11 @@ export const dataThemeDefault: GridcardsSelectThemeInterface = {
   name: EGridcardsInputNames.theme,
   selected: EThemes.Default
 };
+
+export function DataThemeDefault2(): GridcardsSelectThemeInterface {
+  return {
+  label: 'Theme',
+  name: EGridcardsInputNames.theme,
+  selected: EThemes.Default
+  };
+}

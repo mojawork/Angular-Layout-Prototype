@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   public title = 'layout';
   public color = true;
   public datagridcards: GridcardsInterface[] | null = null;
+  public datagridcardTemp: GridcardsInterface | null = null;
   public zoom: boolean = this.layoutService.getLayoutStatus().zoom;
 
   public zoomIcons(): string {
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.store.subscribe((response) => {
       this.datagridcards = response.appstate.datagridcards;
+      this.datagridcardTemp = response.appstate.datagridcardTemp;
     });
 
 
