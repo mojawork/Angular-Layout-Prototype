@@ -4,7 +4,7 @@
 
 $label-min-width: 260px;
 $active-width: 60%;
-$time: 0.25s;
+$time: 2.25s;
 // ----------------------------------------------------------------------------
 
 :host {
@@ -12,7 +12,7 @@ $time: 0.25s;
   box-sizing: border-box;
   top: 0;
   right: 0;
-  // width: 0;
+  width: 0;
   min-height: 100%;
   overflow: hidden;
   border-left: 2px solid var(--c-bright);
@@ -54,6 +54,7 @@ $time: 0.25s;
   fieldset {
     display: flex;
     flex-flow: row wrap;
+    margin: $margin;
 
     div {
       display: flex;

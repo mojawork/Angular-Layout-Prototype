@@ -3,15 +3,26 @@ import {EGridcardsInputNames} from '../app/components/form/gridcards-form/gridca
 import {EThemes} from '../app/app.interface';
 
 export const dataThemeDefault: GridcardsSelectThemeInterface = {
-  label: 'Theme',
-  name: EGridcardsInputNames.theme,
-  selected: EThemes.Default
+    label: 'Theme',
+    name: EGridcardsInputNames.theme,
+    selected: EThemes.Default
 };
 
 export function DataThemeDefault2(): GridcardsSelectThemeInterface {
-  return {
-  label: 'Theme',
-  name: EGridcardsInputNames.theme,
-  selected: EThemes.Default
-  };
+    return {
+        label: 'Theme',
+        name: EGridcardsInputNames.theme,
+        selected: EThemes.Default
+    };
+}
+
+export class DataDefault {
+
+    public theme(): GridcardsSelectThemeInterface {
+        return {
+            label: 'Theme',
+            name: EGridcardsInputNames.theme,
+            selected: EThemes.Default
+        };
+    }
 }

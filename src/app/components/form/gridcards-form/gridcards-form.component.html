@@ -1,86 +1,85 @@
+<form
+        [formGroup]="formgroupGridCard"
+        novalidate
+        (ngSubmit)="onSubmit(dataGridCard.id)">
+    <span class="h1 icons m-pointer close"
+          (click)="layoutService.setForm(dataGridCard.id)">close</span>
 
-<form *ngIf="dataGridCard"
-      [formGroup]="formgroupGridCard"
-      novalidate
-      (ngSubmit)="onSubmit(dataGridCard.id)">
-  <span class="h1 icons m-pointer close">close</span>
 
-  <!-- [ngClass]="{'active': option.id === layoutService.getLayoutStatus().formid}" //-->
+    <fieldset>
+        <legend class="move">{{dataGridCard.id}}</legend>
 
-  <fieldset>
-    <legend class="move">{{dataGridCard.id}}</legend>
+        <label>
+            <button (click)="setTheme()">Set Theme</button>
+        </label>
 
-    <button (click)="addTheme()">add theme</button>
-    <button (click)="removeTheme()">remove theme</button>
 
-    <span>{{dataGridCard.theme?.selected}}</span>
+        <div *ngIf="dataGridCard.theme">
+            <label>{{dataGridCard.theme.name}}:
+                <select [formControlName]="dataGridCard.theme.name">
+                    <option
+                            *ngFor="let theme of themeGridCard  | keyvalue"
+                            [value]="theme.value">
+                        {{theme.key}}
+                    </option>
+                </select>
+            </label>
+        </div>
 
-    <div *ngIf="dataGridCard.theme">
-      <label>{{dataGridCard.theme.name}}:
-        <select [formControlName]="dataGridCard.theme.name">
-          <option
-            *ngFor="let theme of themeGridCard  | keyvalue"
-            [value]="theme.value">
-            {{theme.key}}
-          </option>
-        </select>
-      </label>
-    </div>
+        <hr>
 
-    <hr>
+        <div>
+            <label>{{dataGridCard.colums.name}}:
+                <input
+                        [formControlName]="dataGridCard.colums.name"
+                        [type]="dataGridCard.colums.type">
+            </label>
+        </div>
 
-    <div>
-      <label>{{dataGridCard.colums.name}}:
-        <input
-          [formControlName]="dataGridCard.colums.name"
-          [type]="dataGridCard.colums.type">
-      </label>
-    </div>
+        <hr>
 
-    <hr>
+        <div>
+            <label>{{dataGridCard.cardColumn.first.name}}:
+                <input
+                        [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.first.value)"
+                        [formControlName]="dataGridCard.cardColumn.first.name"
+                        [type]="dataGridCard.cardColumn.first.type"
+                        min="1"
+                        [max]="dataGridCard.colums.value">
+            </label>
 
-    <div>
-      <label>{{dataGridCard.cardColumn.first.name}}:
-        <input
-          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.first.value)"
-          [formControlName]="dataGridCard.cardColumn.first.name"
-          [type]="dataGridCard.cardColumn.first.type"
-          min="1"
-          [max]="dataGridCard.colums.value">
-      </label>
+            <label>{{dataGridCard.cardColumn.odd.name}}:
+                <input
+                        [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.odd.value)"
+                        [formControlName]="dataGridCard.cardColumn.odd.name"
+                        [type]="dataGridCard.cardColumn.odd.type"
+                        min="1"
+                        [max]="dataGridCard.colums.value">
+            </label>
 
-      <label>{{dataGridCard.cardColumn.odd.name}}:
-        <input
-          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.odd.value)"
-          [formControlName]="dataGridCard.cardColumn.odd.name"
-          [type]="dataGridCard.cardColumn.odd.type"
-          min="1"
-          [max]="dataGridCard.colums.value">
-      </label>
+            <label>{{dataGridCard.cardColumn.even.name}}:
+                <input
+                        [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.even.value)"
+                        [formControlName]="dataGridCard.cardColumn.even.name"
+                        [type]="dataGridCard.cardColumn.odd.type"
+                        min="1"
+                        [max]="dataGridCard.colums.value">
+            </label>
 
-      <label>{{dataGridCard.cardColumn.even.name}}:
-        <input
-          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.even.value)"
-          [formControlName]="dataGridCard.cardColumn.even.name"
-          [type]="dataGridCard.cardColumn.odd.type"
-          min="1"
-          [max]="dataGridCard.colums.value">
-      </label>
+            <label>{{dataGridCard.cardColumn.last.name}}:
+                <input
+                        [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.last.value)"
+                        [formControlName]="dataGridCard.cardColumn.last.name"
+                        [type]="dataGridCard.cardColumn.last.type"
+                        min="1"
+                        [max]="dataGridCard.colums.value">
+            </label>
+        </div>
 
-      <label>{{dataGridCard.cardColumn.last.name}}:
-        <input
-          [value]="validateCardColums(dataGridCard.colums.value, dataGridCard.cardColumn.last.value)"
-          [formControlName]="dataGridCard.cardColumn.last.name"
-          [type]="dataGridCard.cardColumn.last.type"
-          min="1"
-          [max]="dataGridCard.colums.value">
-      </label>
-    </div>
+        <hr>
 
-    <hr>
+        <button class="success" type="submit">Submit {{dataGridCard.id}}</button>
 
-    <button class="success" type="submit">Submit {{dataGridCard.id}}</button>
-
-  </fieldset>
+    </fieldset>
 
 </form>

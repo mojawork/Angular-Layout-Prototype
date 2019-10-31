@@ -1,3 +1,6 @@
+
+
+
 <ng-container *ngFor="let datagridcard of datagridcards">
 
   <article [ngStyle]="gridTemplateColums(datagridcard)" [class]="datagridcard.theme?.selected"
@@ -8,7 +11,7 @@
       [ngStyle]="gridColumHeaderFooter(datagridcard)">
       <h1 class="h2">
         <span *ngIf="layoutService.getLayoutStatus().edit" class="icons m-pointer"
-              (click)="setGridCardForm(datagridcard)">edit</span>
+              (click)="setGridCardForm(datagridcard); layoutService.setForm(datagridcard.id)">edit</span>
         {{datagridcard.cardHeader.content}}
       </h1>
     </header>
