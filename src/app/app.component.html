@@ -4,7 +4,7 @@
     'm-edit': layoutService.getLayoutStatus().form
     }">
   <header>
-    <strong class="h1">
+    <strong class="h1-g">
       <span class="icons m-pointer zoom" (click)="layoutService.setLayoutZoom()">{{zoomIcons()}}</span>
       Header
 
@@ -19,7 +19,7 @@
     <router-outlet></router-outlet>
   </main>
   <footer>
-    <strong class="h2">Footer</strong>
+    <strong class="h2-g">Footer</strong>
   </footer>
 
   <app-mediascreen></app-mediascreen>
@@ -28,7 +28,7 @@
 
 <section>
 
-  <app-gridcards-form *ngIf="datagridcardTemp"
+  <app-gridcards-form
     [ngClass]="{'active': layoutService.getLayoutStatus().form}"
     >
   </app-gridcards-form>

@@ -9,7 +9,7 @@
     <header
       *ngIf="datagridcard.cardHeader"
       [ngStyle]="gridColumHeaderFooter(datagridcard)">
-      <h1 class="h2">
+      <h1 class="h2-g" [ngClass]="datagridcard.cardHeader.direction">
         <span *ngIf="layoutService.getLayoutStatus().edit" class="icons m-pointer"
               (click)="setGridCardForm(datagridcard); layoutService.setForm(datagridcard.id)">edit</span>
         {{datagridcard.cardHeader.content}}

@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GirdCardColumTypeInterface, GridcardsInterface} from '../../../../data/gridcards.interface';
 import {LayoutService} from '../../../utils/layout/layout.service';
 import {Store} from '@ngxs/store';
 import {DataGridCardTemp} from '../../../app.state';
+import {GirdCardColumTypeInterface, GridcardsInterface} from '../../../../data';
 
 @Component({
   selector: 'app-gridcards-view',
@@ -23,7 +23,7 @@ export class GridcardsViewComponent implements OnInit {
   public gridTemplateColums(datagridcard: GridcardsInterface) {
 
     let colums = '1fr';
-    for (let i = 0; i < (parseFloat(datagridcard.colums.value) - 1); i++) {
+    for (let i = 0; i < (parseFloat(datagridcard.columns.value) - 1); i++) {
       colums = `${colums}  1fr`;
     }
     return {'grid-template-columns': colums};
@@ -47,12 +47,11 @@ export class GridcardsViewComponent implements OnInit {
   }
 
   public gridColumHeaderFooter(datagridcard: GridcardsInterface) {
-    return {'grid-column': 'span ' + parseFloat(datagridcard.colums.value)};
+    return {'grid-column': 'span ' + parseFloat(datagridcard.columns.value)};
   }
 
   public setGridCardForm(datagridcard: GridcardsInterface) {
     this.store.dispatch( new DataGridCardTemp (datagridcard));
-    //this.layoutService.setForm(dataGridCard.id);
   }
 
 

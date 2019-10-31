@@ -6,19 +6,19 @@ body {
       font-size: $font-size-5 * $font-mobile-factor;
       line-height: $line-height-5 * $font-mobile-factor;
     }
-    h1, .h1 {
+    h1, .h1-g {
       font-size: $font-size-1 * $font-mobile-factor;
       line-height: $line-height-1 * $font-mobile-factor;
     }
-    h2, .h2 {
+    h2, .h2-g {
       font-size: $font-size-2 * $font-mobile-factor;
       line-height: $line-height-2 * $font-mobile-factor;
     }
-    h3, .h3 {
+    h3, .h3-g {
       font-size: $font-size-3 * $font-mobile-factor;
       line-height: $line-height-3 * $font-mobile-factor;
     }
-    h4, .h4, strong {
+    h4, .h4-g, strong {
       font-size: $font-size-4 * $font-mobile-factor;
       line-height: $line-height-4 * $font-mobile-factor;
     }
@@ -34,19 +34,19 @@ body {
       font-size: $font-size-5 * $font-desktop-factor;
       line-height: $line-height-5 * $font-desktop-factor;
     }
-    h1, .h1 {
+    h1, .h1-g {
       font-size: $font-size-1 * $font-desktop-factor;
       line-height: $line-height-1 * $font-desktop-factor;
     }
-    h2, .h2 {
+    h2, .h2-g {
       font-size: $font-size-2 * $font-desktop-factor;
       line-height: $line-height-2 * $font-desktop-factor;
     }
-    h3, .h3 {
+    h3, .h3-g {
       font-size: $font-size-3 * $font-desktop-factor;
       line-height: $line-height-3 * $font-desktop-factor;
     }
-    h4, .h4, strong {
+    h4, .h4-g, strong {
       font-size: $font-size-4 * $font-desktop-factor;
       line-height: $line-height-4 * $font-desktop-factor;
     }

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngxs/store';
-import {GridcardsInterface} from '../data/gridcards.interface';
+
 import {LayoutService} from './utils/layout/layout.service';
+import {GridcardsInterface} from '../data';
 
 @Component({
   selector: 'app-root',

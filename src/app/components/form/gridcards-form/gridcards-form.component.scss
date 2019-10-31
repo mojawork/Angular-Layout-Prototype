@@ -2,9 +2,9 @@
 // Config
 @import "import.scss";
 
-$label-min-width: 260px;
+$label-min-width: 16rem;
 $active-width: 60%;
-$time: 2.25s;
+$time: 0.4s;
 // ----------------------------------------------------------------------------
 
 :host {
@@ -15,11 +15,19 @@ $time: 2.25s;
   width: 0;
   min-height: 100%;
   overflow: hidden;
-  border-left: 2px solid var(--c-bright);
   background-color: var(--ct-bright);
   transition: width $time ease-in-out;
+  //transition-delay: 2s;
+  .wrapper {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    min-height: 100%;
+    border-left: 2px solid var(--c-bright);
+  }
 
   &.active {
+    display: block;
     width: $active-width;
     overflow-y: auto;
     @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
@@ -39,8 +47,6 @@ $time: 2.25s;
   }
 
   form {
-    // display: none;
-
     &.active {
       display: flex;
       flex-flow: column;
@@ -53,30 +59,43 @@ $time: 2.25s;
 
   fieldset {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     margin: $margin;
 
-    div {
+    > * {
       display: flex;
       flex-flow: row wrap;
-      width: 100%;
+      align-items: center;
+
+      .label {
+        display: flex;
+        align-items: center;
+        min-width: $label-min-width;
+        margin-right: $margin;
+        margin-bottom: $margin;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      input[type="text"] {
+        display: flex;
+        min-width: calc(100% - #{$label-min-width + $margin});
+        margin-bottom: $margin;
+      }
+
+      input[type="number"] {
+        max-width: 5rem;
+        margin-right: $margin;
+        margin-bottom: $margin;
+      }
+
+      select {
+        margin-right: $margin;
+        margin-bottom: $margin;
+      }
     }
-  }
 
-  label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-width: $label-min-width;
-    margin: 0 $margin $margin 0;
-    padding: $padding;
-
-    :last-of-type {
-      margin-right: 0;
-    }
-  }
-
-  input[type="number"] {
-    max-width: 50px;
   }
 }

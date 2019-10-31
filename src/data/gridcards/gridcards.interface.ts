@@ -1,10 +1,10 @@
-import {EGridcardsInputNames} from '../app/components/form/gridcards-form/gridcards-form.interface';
-import {EThemes} from '../app/app.interface';
+import {EDirection, EThemes} from '../../app/utils/layout/layout.interface';
+import {EGridcardsInputNames} from '../../app/components/form/gridcards-form/gridcards-form.interface';
 
 export interface GridcardsInterface {
   id: string;
   theme?: GridcardsSelectThemeInterface;
-  colums: GridcardsValueInterface;
+  columns: GridcardsValueInterface;
   cardHeader?: GridcardHeaderInterface;
   cardColumn?: {
     first: GridcardsValueInterface;
@@ -19,19 +19,14 @@ export interface GridcardsInterface {
 export interface GridcardHeaderInterface {
   sticky?: boolean;
   content?: string;
-  direction?: GridcardDirectionEnum;
+  direction?: EDirection;
 }
 
 export interface GridcardsSelectThemeInterface {
-  label: string;
-  name: EGridcardsInputNames.theme;
   selected: EThemes;
 }
 
 export interface GridcardsValueInterface {
-  label: string;
-  name: EGridcardsInputNames;
-  type: string;
   value: string;
 }
 
@@ -49,7 +44,7 @@ export interface GridcardsContentInterface {
 
 export interface GridcardFooterInterface {
   content?: string;
-  direction?: GridcardDirectionEnum;
+  direction?: EDirection;
 }
 
 export interface GirdCardColumTypeInterface {
@@ -57,21 +52,7 @@ export interface GirdCardColumTypeInterface {
   last: boolean;
   even: boolean;
   odd: boolean;
-
 }
 
-export enum GridcardsColumTypeEnum {
-  first,
-  last,
-  even,
-  odd,
 
-}
 
-export enum GridcardDirectionEnum {
-  Up,
-  Down,
-  Left,
-  Right,
-
-}

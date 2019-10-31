@@ -1,0 +1,24 @@
+.row-g{
+  display: flex;
+  flex-flow: row;
+}
+
+.column-g{
+  display: flex;
+  flex-flow: column;
+}
+
+.left-g {
+  text-align: left;
+  justify-content: left;
+}
+
+.right-g {
+  text-align: right;
+  justify-content: right;
+}
+
+.center-g {
+  text-align: center;
+  justify-content: center;
+}

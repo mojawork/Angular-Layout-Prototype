@@ -1,37 +1,25 @@
-/*
-export class IGridcardsFormControlNames {
-  public id = 'id';
-  public colums = 'colums';
-  public cardColumnFirst = 'cardColumnFirst';
-  public cardColumnEven = 'cardColumnEven';
-  public cardColumnOdd = 'cardColumnOdd';
-  public cardColumnLast = 'cardColumnLast';
-}
- */
+import {EDirection, EThemes} from '../../../utils/layout/layout.interface';
 
-import {EThemes} from '../../../app.interface';
 
 export enum EGridcardsInputNames {
   theme = 'theme',
-  colums = 'colums',
+  columns = 'colums',
+  header = 'header',
+  headerDirection = 'headerDirection',
   cardColumnFirst = 'cardColumnFirst',
   cardColumnEven = 'cardColumnEven',
   cardColumnOdd = 'cardColumnOdd',
   cardColumnLast = 'cardColumnLast',
 }
 
-
 export interface IGridcardsFormControlNames {
   id: string;
+  [EGridcardsInputNames.header]: string | null;
+  [EGridcardsInputNames.headerDirection]: EDirection | null;
   [EGridcardsInputNames.theme]: EThemes | null;
-  [EGridcardsInputNames.colums]: string;
+  [EGridcardsInputNames.columns]: string;
   [EGridcardsInputNames.cardColumnFirst]: string;
   [EGridcardsInputNames.cardColumnEven]: string;
   [EGridcardsInputNames.cardColumnOdd]: string;
   [EGridcardsInputNames.cardColumnLast]: string;
 }
-
-
-
-
-

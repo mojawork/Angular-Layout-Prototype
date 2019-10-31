@@ -25,7 +25,6 @@ body {
 
   input, select, button {
     border-radius: $radius;
-    margin-right: $margin;
     padding: $padding * 0.5;
     background-color: var(--c-background);
     cursor: pointer;
@@ -49,6 +48,7 @@ body {
     font-weight: $font-weight-bold;
     color: var(--text-secondary);
     background-color: var(--c-light);
+    border: $border solid transparent;
     box-shadow: 0 0 $button-shadow 0 var(--text-secondary);
 
     &:active {

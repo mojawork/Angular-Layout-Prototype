@@ -1,30 +1,28 @@
 import {State, Action, StateContext} from '@ngxs/store';
-import {AppStateInterface} from './app.interface';
-import {dataGridCards} from '../data/gridcrads';
-import {GridcardsInterface, GridcardsSelectThemeInterface} from '../data/gridcards.interface';
-import {dataThemeDefault} from '../data/gridcradsdefaults';
+import {IAppState} from './app.interface';
 
+
+import {dataGridCards, GridcardsInterface} from '../data';
 
 export class DataGridCards {
   public static readonly type = 'datagridcards';
+
   constructor(public dataGridCardsPayload: GridcardsInterface[]) {
   }
 }
 
 export class DataGridCardTemp {
   public static readonly type = 'datagridcardtemp';
+
   constructor(public dataGridCardTempPayload: GridcardsInterface) {
   }
 }
 
-@State<AppStateInterface>({
+@State<IAppState>({
   name: 'appstate',
   defaults: {
     datagridcards: dataGridCards,
     datagridcardTemp: null,
-    datagridcardsdefault : {
-      theme : dataThemeDefault
-    }
   }
 })
 export class AppState {
