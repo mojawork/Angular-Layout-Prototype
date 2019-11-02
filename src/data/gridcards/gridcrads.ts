@@ -1,7 +1,5 @@
 import {GridcardsInterface} from './gridcards.interface';
-import {EGridcardsInputNames} from '../../app/components/form/gridcards-form/gridcards-form.interface';
 import {EDirection, EThemes} from '../../app/utils/layout/layout.interface';
-import {gridCardsFormLabels} from '../localisation/localisation';
 
 export const dataGridCards: GridcardsInterface[] = [
   {
@@ -9,11 +7,6 @@ export const dataGridCards: GridcardsInterface[] = [
     theme: null,
     columns: {
       value: '6',
-    },
-    cardHeader: {
-      content: 'Header: Change Cards',
-      direction: EDirection.Left,
-      sticky: false
     },
     cardColumn: {
       first: {
@@ -42,10 +35,7 @@ export const dataGridCards: GridcardsInterface[] = [
       {content: 'Content 10'},
       {content: 'Content 11'},
       {content: 'Content 12'}
-    ],
-    cardFooter: {
-      content: 'Footer'
-    }
+    ]
   },
   {
     id: 'GridID-02',
@@ -87,7 +77,8 @@ export const dataGridCards: GridcardsInterface[] = [
       {content: 'Content 10'}
     ],
     cardFooter: {
-      content: 'Footer'
+      content: 'Footer: Change Cards',
+      direction: EDirection.Left,
     }
   },
   {
@@ -123,7 +114,8 @@ export const dataGridCards: GridcardsInterface[] = [
       {content: 'Content 03'}
     ],
     cardFooter: {
-      content: 'Footer'
+      content: 'Footer: Change Cards',
+      direction: EDirection.Left,
     }
   },
 ];

@@ -1,0 +1,39 @@
+// ----------------------------------------------------------------------------
+// Config
+$edit-triangle-size: 2rem;
+// ----------------------------------------------------------------------------
+
+.edit-g {
+  border: $border solid var(--c-success) !important;
+  box-shadow: 0 0 $button-shadow 0 var(--c-success) !important;
+
+  .edit-button-g {
+    background-color: var(--c-success) !important;
+    color: var(--text-white) !important;
+    box-shadow: 0 0 $button-shadow 0 var(--c-success) !important;
+  }
+
+  &:before {
+    content: "\00a0 ";
+    display: flex;
+    position: absolute;
+    top:calc(50% - #{$edit-triangle-size});
+    right:- $edit-triangle-size;
+    width: 0;
+    height: 0;
+    border-top: $edit-triangle-size solid transparent;
+    border-bottom: $edit-triangle-size solid transparent;
+    border-left: $edit-triangle-size solid green;
+    z-index: 100;
+    @include mediascreen($mediascreen: 'custom', $max: $ms-3-max) {
+      display: none;
+    }
+  }
+
+}
+
+.edit-button-g {
+  background-color: var(--c-warning) !important;
+  color: var(--text-black) !important;
+  box-shadow: 0 0 $button-shadow 0 var(--c-warning) !important;
+}

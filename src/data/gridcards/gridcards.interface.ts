@@ -13,7 +13,7 @@ export interface GridcardsInterface {
     last: GridcardsValueInterface;
   };
   cardContent?: GridcardsContentInterface [];
-  cardFooter?: GridcardFooterInterface | null;
+  cardFooter?: GridcardFooterInterface;
 }
 
 export interface GridcardHeaderInterface {

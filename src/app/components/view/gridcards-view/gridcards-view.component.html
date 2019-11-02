@@ -1,17 +1,22 @@
-
-
-
 <ng-container *ngFor="let datagridcard of datagridcards">
 
   <article [ngStyle]="gridTemplateColums(datagridcard)" [class]="datagridcard.theme?.selected"
-           [ngClass]="{'color': datagridcard.theme}">
+           [ngClass]="{
+            'color': datagridcard.theme,
+            'edit-g' : this.layoutService.getLayoutStatus().formid === datagridcard.id
+            }">
+
+    <button *ngIf="layoutService.getLayoutStatus().edit"
+         [ngStyle]="gridColumHeaderFooter(datagridcard)"
+            (click)="setGridCardForm(datagridcard);layoutService.setForm(datagridcard.id)"
+            class="edit-button-g icons-g m-pointer-g edit-button">
+            edit
+    </button>
 
     <header
       *ngIf="datagridcard.cardHeader"
       [ngStyle]="gridColumHeaderFooter(datagridcard)">
       <h1 class="h2-g" [ngClass]="datagridcard.cardHeader.direction">
-        <span *ngIf="layoutService.getLayoutStatus().edit" class="icons m-pointer"
-              (click)="setGridCardForm(datagridcard); layoutService.setForm(datagridcard.id)">edit</span>
         {{datagridcard.cardHeader.content}}
       </h1>
     </header>
@@ -30,6 +35,7 @@
 
     <footer
       *ngIf="datagridcard.cardFooter"
+      [ngClass]="datagridcard.cardFooter.direction"
       [ngStyle]="gridColumHeaderFooter(datagridcard)">
       {{datagridcard.cardFooter.content}}
     </footer>

@@ -1,4 +1,5 @@
 // ----------------------------------------------------------------------------
+// Config
 $time: 0.5s;
 // ----------------------------------------------------------------------------
 
@@ -15,8 +16,7 @@ body {
       background-color: var(--c-secondary);
       border: 1px solid var(--c-thirdly);
 
-      &.move {
-
+      &.move-g {
         animation-name: label-move;
         animation-duration: $time;
       }
@@ -56,19 +56,19 @@ body {
     }
   }
 
-  button.success {
+  button.success-g {
     color: var(--text-bright);
     background-color: var(--c-success);
     box-shadow: 0 0 $button-shadow 0 var(--c-success);
   }
 
-  button.danger {
+  button.danger-g {
     color: var(--text-bright);
     background-color: var(--c-danger);
     box-shadow: 0 0 $button-shadow 0 var(--c-danger);
   }
 
-  button.warning {
+  button.warning-g {
     color: var(--text-bright);
     background-color: var(--c-warning);
     box-shadow: 0 0 $button-shadow 0 var(--c-warning);

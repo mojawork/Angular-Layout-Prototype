@@ -4,16 +4,23 @@
     [formGroup]="formGroupGridCard"
     novalidate
     (ngSubmit)="onSubmit(dataGridCard.id)">
-    <span class="h1-g icons m-pointer close"
+    <span class="h1-g icons-g m-pointer-g close"
           (click)="layoutService.setForm(dataGridCard.id)">close</span>
     <fieldset>
-      <legend class="move">{{dataGridCard.id}}</legend>
+      <legend class="move-g">{{dataGridCard.id}}</legend>
 
       <!-- header --//-->
       <label>
-        <span class="label">{{localisation.header}}:</span>
-        <input [formControlName]="formGroupGridInputNames.header"
-               type="text">
+           <span class="label">
+            <button (click)="setHeader()">
+              <span *ngIf="!dataGridCard.cardHeader" class="icons-g">add</span>
+              <span *ngIf="dataGridCard.cardHeader" class="icons-g">remove</span>
+              {{localisation.header}}
+            </button>
+          </span>
+        <input *ngIf="dataGridCard.cardHeader"
+                [formControlName]="formGroupGridInputNames.headerContent"
+               type="text"/>
       </label>
       <ng-container *ngIf="dataGridCard.cardHeader">
         <label>
@@ -35,7 +42,7 @@
       <div>
           <span class="label">
             <button (click)="setTheme()">
-              <span class="icons">invert_colors</span>
+              <span class="icons-g">invert_colors</span>
               {{localisation.themeButton}}
             </button>
           </span>
@@ -113,8 +120,37 @@
 
       <hr>
 
+      <!-- footer --//-->
+      <label>
+           <span class="label">
+            <button (click)="setFooter()">
+              <span *ngIf="!dataGridCard.cardFooter" class="icons-g">add</span>
+              <span *ngIf="dataGridCard.cardFooter" class="icons-g">remove</span>
+              {{localisation.footerButton}}
+            </button>
+          </span>
+        <input *ngIf="dataGridCard.cardFooter"
+               [formControlName]="formGroupGridInputNames.footerContent"
+               type="text"/>
+      </label>
+      <ng-container *ngIf="dataGridCard.cardFooter">
+        <label>
+          <span class="label">{{localisation.direction}}:</span>
+          <select [formControlName]="formGroupGridInputNames.footerDirection">
+            <option
+              *ngFor="let direction of directions  | keyvalue"
+              [value]="direction.value">
+              {{direction.key}}
+            </option>
+          </select>
+        </label>
+      </ng-container>
+      <!-- footer --//-->
+
+      <hr>
+
       <div class="right-g">
-        <button class="success" type="submit">{{localisation.submitButton}} {{dataGridCard.id}}</button>
+        <button class="success-g" type="submit">{{localisation.submitButton}} {{dataGridCard.id}}</button>
       </div>
 
     </fieldset>

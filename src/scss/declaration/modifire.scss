@@ -1,11 +1,15 @@
-.m-fixed {
+// ----------------------------------------------------------------------------
+// Config
+// ----------------------------------------------------------------------------
+
+.m-fixed-g {
   position: fixed;
 }
-.m-no-scroll {
+.m-no-scroll-g {
   overflow: hidden;
   position: fixed;
 }
-.m-pointer{
+.m-pointer-g{
   cursor: pointer;
 }
 

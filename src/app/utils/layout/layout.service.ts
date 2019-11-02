@@ -27,6 +27,7 @@ export class LayoutService {
       this.layoutStatus.form = true;
     } else {
       this.layoutStatus.form = !this.layoutStatus.form;
+      this.layoutStatus.formid = null;
     }
   }
 

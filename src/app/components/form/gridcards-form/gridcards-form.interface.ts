@@ -2,19 +2,21 @@ import {EDirection, EThemes} from '../../../utils/layout/layout.interface';
 
 
 export enum EGridcardsInputNames {
+  headerContent = 'headerContent',
+  headerDirection = 'headerDirection',
   theme = 'theme',
   columns = 'colums',
-  header = 'header',
-  headerDirection = 'headerDirection',
   cardColumnFirst = 'cardColumnFirst',
   cardColumnEven = 'cardColumnEven',
   cardColumnOdd = 'cardColumnOdd',
   cardColumnLast = 'cardColumnLast',
+  footerContent = 'footerContent',
+  footerDirection = 'footerDirection'
 }
 
 export interface IGridcardsFormControlNames {
   id: string;
-  [EGridcardsInputNames.header]: string | null;
+  [EGridcardsInputNames.headerContent]: string | null;
   [EGridcardsInputNames.headerDirection]: EDirection | null;
   [EGridcardsInputNames.theme]: EThemes | null;
   [EGridcardsInputNames.columns]: string;
@@ -22,4 +24,6 @@ export interface IGridcardsFormControlNames {
   [EGridcardsInputNames.cardColumnEven]: string;
   [EGridcardsInputNames.cardColumnOdd]: string;
   [EGridcardsInputNames.cardColumnLast]: string;
+  [EGridcardsInputNames.footerContent]: string;
+  [EGridcardsInputNames.footerDirection]: EDirection | null;
 }

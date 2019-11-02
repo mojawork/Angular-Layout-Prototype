@@ -5,10 +5,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {EGridcardsInputNames, IGridcardsFormControlNames} from './gridcards-form.interface';
 import {LayoutService} from '../../../utils/layout/layout.service';
 import {Observable, Subscription} from 'rxjs';
-import {DataGridDefault, gridCardsFormLabels, GridcardsInterface} from '../../../../data';
+import {DataGridDefault, localisationGridCardsForm, GridcardsInterface} from '../../../../data';
 import {EDirection, EThemes} from '../../../utils/layout/layout.interface';
 import {GridcardsFormUtils} from './utils';
-
 
 @Component({
   selector: 'app-gridcards-form',
@@ -17,7 +16,7 @@ import {GridcardsFormUtils} from './utils';
 })
 export class GridcardsFormComponent implements OnInit, OnDestroy {
 
-  public localisation = gridCardsFormLabels;
+  public localisation = localisationGridCardsForm;
   public dataGridCard$: Observable<GridcardsInterface>;
   public dataGridCardSubscription: Subscription;
   public dataGridCard: GridcardsInterface | null = null;
@@ -40,20 +39,33 @@ export class GridcardsFormComponent implements OnInit, OnDestroy {
     this.dataGridCard$ = this.store.select(state => state.appstate.datagridcardTemp);
   }
 
-
   public addFromGrpup(): void {
     const formGroup: IGridcardsFormControlNames = {
       id: this.dataGridCard.id,
-      [EGridcardsInputNames.headerDirection]: this.dataGridCard.cardHeader.direction,
-      [EGridcardsInputNames.header]: this.dataGridCard.cardHeader.content,
+      [EGridcardsInputNames.headerContent]: this.dataGridCard.cardHeader ? this.dataGridCard.cardHeader.content : null,
+      [EGridcardsInputNames.headerDirection]: this.dataGridCard.cardHeader ? this.dataGridCard.cardHeader.direction : null,
       [EGridcardsInputNames.theme]: this.dataGridCard.theme ? this.dataGridCard.theme.selected : null,
       [EGridcardsInputNames.columns]: this.dataGridCard.columns.value,
       [EGridcardsInputNames.cardColumnFirst]: this.dataGridCard.cardColumn.first.value,
       [EGridcardsInputNames.cardColumnEven]: this.dataGridCard.cardColumn.even.value,
       [EGridcardsInputNames.cardColumnOdd]: this.dataGridCard.cardColumn.odd.value,
-      [EGridcardsInputNames.cardColumnLast]: this.dataGridCard.cardColumn.last.value
+      [EGridcardsInputNames.cardColumnLast]: this.dataGridCard.cardColumn.last.value,
+      [EGridcardsInputNames.footerContent]: this.dataGridCard.cardFooter ? this.dataGridCard.cardFooter.content : null,
+      [EGridcardsInputNames.footerDirection]: this.dataGridCard.cardFooter ? this.dataGridCard.cardFooter.direction : null
     };
     this.formGroupGridCard = this.formBuilder.group(formGroup);
+  }
+
+  public setHeader(): void {
+    if (this.dataGridCard.cardHeader) {
+      this.dataGridCard.cardHeader = null;
+    } else {
+      this.dataGridCard.cardHeader = this.dataGridDefault.header();
+      this.formGroupGridCard.patchValue({
+        headerContent: this.dataGridDefault.header().content,
+        headerDirection: this.dataGridDefault.header().direction
+      });
+    }
   }
 
   public setTheme(): void {
@@ -65,11 +77,22 @@ export class GridcardsFormComponent implements OnInit, OnDestroy {
     }
   }
 
+  public setFooter(): void {
+    if (this.dataGridCard.cardFooter) {
+      this.dataGridCard.cardFooter = null;
+    } else {
+      this.dataGridCard.cardFooter = this.dataGridDefault.footer();
+      this.formGroupGridCard.patchValue({
+        footerContent: this.dataGridDefault.footer().content,
+        footerDirection: this.dataGridDefault.footer().direction
+      });
+    }
+  }
 
   public dataMapper(values: IGridcardsFormControlNames): void {
 
-    this.dataGridCard.cardHeader.content = values[EGridcardsInputNames.header];
     if (this.dataGridCard.cardHeader) {
+      this.dataGridCard.cardHeader.content = values[EGridcardsInputNames.headerContent];
       this.dataGridCard.cardHeader.direction = values[EGridcardsInputNames.headerDirection];
     } else {
       this.dataGridCard.cardHeader = null;
@@ -85,6 +108,12 @@ export class GridcardsFormComponent implements OnInit, OnDestroy {
       this.dataGridCard.theme.selected = values[EGridcardsInputNames.theme];
     } else {
       this.dataGridCard.theme = null;
+    }
+    if (this.dataGridCard.cardFooter) {
+      this.dataGridCard.cardFooter.content = values[EGridcardsInputNames.footerContent];
+      this.dataGridCard.cardFooter.direction = values[EGridcardsInputNames.footerDirection];
+    } else {
+      this.dataGridCard.cardFooter = null;
     }
   }
 
