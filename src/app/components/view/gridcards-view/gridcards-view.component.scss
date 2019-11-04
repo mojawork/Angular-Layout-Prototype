@@ -72,11 +72,11 @@
   article.color {
     background-color: var(--c-background);
 
-    > * {
+    > section {
       background-color: var(--c-secondary);
     }
 
-    > *:nth-child(odd) {
+    > section.even {
       background-color: var(--c-thirdly);
     }
 

@@ -1,7 +1,7 @@
 import {LayoutStatusInterface} from './layout.interface';
 
 export const LAYOUTSTATUS: LayoutStatusInterface = {
-  edit: true,
+  edit: false,
   form: false,
   formid: null,
   zoom: false

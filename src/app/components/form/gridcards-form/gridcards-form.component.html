@@ -4,10 +4,13 @@
     [formGroup]="formGroupGridCard"
     novalidate
     (ngSubmit)="onSubmit(dataGridCard.id)">
-    <span class="h1-g icons-g m-pointer-g close"
-          (click)="layoutService.setForm(dataGridCard.id)">close</span>
+    <button
+        class="icons-g close"
+        (click)="layoutService.setForm(dataGridCard.id)">
+      close
+    </button>
     <fieldset>
-      <legend class="move-g">{{dataGridCard.id}}</legend>
+      <legend>{{dataGridCard.id}}</legend>
 
       <!-- header --//-->
       <label>

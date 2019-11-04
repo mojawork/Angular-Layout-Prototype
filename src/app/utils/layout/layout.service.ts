@@ -31,6 +31,10 @@ export class LayoutService {
     }
   }
 
+  public setEdit(): void {
+    this.layoutStatus.edit = !this.layoutStatus.edit;
+  }
+
   public setLayoutZoom(): void {
     this.layoutStatus.zoom = !this.layoutStatus.zoom;
   }

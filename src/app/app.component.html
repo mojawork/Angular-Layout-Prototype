@@ -28,6 +28,10 @@
 
 <section>
 
+  <button class="icons-g edit"
+    (click)="layoutService.setEdit()"
+  >edit</button>
+
   <app-gridcards-form
     [ngClass]="{'active': layoutService.getLayoutStatus().form}"
     >

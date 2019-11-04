@@ -122,12 +122,8 @@ export class GridcardsFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
     this.dataGridCardSubscription = this.dataGridCard$.subscribe(state => {
       this.dataGridCard = state;
-
-      console.log(this.dataGridCard);
-
       if (this.dataGridCard) {
         this.addFromGrpup();
         this.formGroupGridSubscription = this.formGroupGridCard.valueChanges.subscribe((values => {

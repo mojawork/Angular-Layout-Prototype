@@ -23,6 +23,7 @@
 
     <section
       *ngFor="let card of datagridcard.cardContent; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+      [ngClass]="{'even': isEven}"
       [ngStyle]="gridColumcard(
             datagridcard,{
               'first': isFirst,

@@ -5,6 +5,7 @@
 $label-min-width: 16rem;
 $active-width: 60%;
 $time: 0.4s;
+
 // ----------------------------------------------------------------------------
 
 :host {
@@ -39,28 +40,17 @@ $time: 0.4s;
     position: absolute;
     top: 0;
     right: 0;
-    padding: $padding * 0.5;
-    background-color: var(--ct-bright);
-    transform: translateY(0);
-    border-bottom: $border solid var(--c-thirdly);
-    border-left: $border solid var(--c-thirdly);
   }
 
   form {
-    &.active {
-      display: flex;
-      flex-flow: column;
-      box-sizing: border-box;
-      margin: $margin;
-      width: calc(100% - #{$padding * 2} - 2px);
-      padding: $padding;
-    }
+
   }
 
   fieldset {
     display: flex;
     flex-flow: column;
     margin: $margin;
+
 
     > * {
       display: flex;
@@ -98,4 +88,5 @@ $time: 0.4s;
     }
 
   }
+
 }
