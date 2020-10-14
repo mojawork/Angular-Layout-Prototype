@@ -34,7 +34,7 @@ export class GridcardsFormComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private formBuilder: FormBuilder,
-    private layoutService: LayoutService,
+    public layoutService: LayoutService,
   ) {
     this.dataGridCard$ = this.store.select(state => state.appstate.datagridcardTemp);
   }

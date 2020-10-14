@@ -16,7 +16,7 @@ export class GridcardsViewComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private layoutService: LayoutService
+    public layoutService: LayoutService
   ) {
   }
 
